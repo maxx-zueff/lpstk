@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="30px" height="30px" viewBox="0 0 30 30" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <path d="M0 0L30 0L30 30L0 30L0 0Z" id="path_1" />
+    <clipPath id="clip_1">
+      <use xlink:href="#path_1" />
+    </clipPath>
+  </defs>
+  <g id="Редактировать" clip-path="url(#clip_1)">
+    <path d="M0 0L30 0L30 30L0 30L0 0Z" id="Редактировать" fill="none" fill-rule="evenodd" stroke="none" />
+    <path d="M16.0025 9.26422L20.7358 13.9976L11.9933 22.7401L6.62831 24.5346C5.90956 24.7751 5.22539 24.0909 5.46539 23.3721L7.25997 18.0071L16.0025 9.26422L16.0025 9.26422ZM17.1808 8.08585L19.3616 5.90501C20.0125 5.25418 21.0679 5.25418 21.7187 5.90501L24.0949 8.28127C24.7458 8.9321 24.7458 9.98752 24.0949 10.6383L21.9141 12.8192L17.1808 8.08585L17.1808 8.08585Z" id="Фигура" fill="#59ADFF" fill-rule="evenodd" stroke="none" />
+  </g>
+</svg>
