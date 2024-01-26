@@ -153,20 +153,93 @@ export function Detail() {
 	return (
 		<div className={styles.detail_container}>
 			<div className={styles.detail_title_container}>
-				<div className={styles.detail_title}>Ваш заказ</div>
+				<div className={styles.detail_title}>Детали вручения</div>
 				<div className={styles.detail_edit}>Изменить</div>
+			</div>
+
+			<div className={styles.detail_list}>
+				<div className={styles.detail_item}>
+					<div className={styles.detail_item_title}>Доставка по адресу</div>
+					<div className={styles.detail_item_main}>г. Москва, ул. Пушкина, д. 1</div>
+				</div>
+				<div className={styles.detail_line}></div>
+				<div className={styles.detail_item}>
+					<div className={styles.detail_item_title}>Квартира / Подъезд / Этаж</div>
+					<div className={styles.detail_item_main}>107 / - / -</div>
+				</div>
+				<div className={styles.detail_line}></div>
+				<div className={styles.detail_item}>
+					<div className={styles.detail_item_title}>Дата и время вручения</div>
+					<div className={styles.detail_item_main}>01/01/2024<div className={styles.point}></div>20:30-21:00</div>
+				</div>
 			</div>
 		</div>		
 	)
 }
 
-// export function Feedback() {
-// 	return ()
-// }
+export function Feedback() {
+	return (
+		<div className={styles.feedback_container}>
+			<div className={styles.feedback_title}>Ваш отзыв</div>
+			<div className={styles.feedback_rate}>
+				<div className={styles.feedback_stars}>
+					<Image
+						src="/star.png"
+						width={15}
+						height={15}
+						alt="Star"
+						className={styles.feedback_star}
+					/>
+					<Image
+						src="/star.png"
+						width={15}
+						height={15}
+						alt="Star"
+						className={styles.feedback_star}
+					/>
+					<Image
+						src="/star.png"
+						width={15}
+						height={15}
+						alt="Star"
+						className={styles.feedback_star}
+					/>
+					<Image
+						src="/star.png"
+						width={15}
+						height={15}
+						alt="Star"
+						className={styles.feedback_star}
+					/>
+					<Image
+						src="/star-blank.png"
+						width={15}
+						height={15}
+						alt="Star"
+						className={styles.feedback_star}
+					/>					
+				</div>
+				<div className={styles.feedback_edit}>Изменить</div>
+			</div>
+			<div className={styles.feedback_comment}>Всё супер! Букет полностью соответсвует ожиданиям.</div>
+		</div>
+	)
+}
 
-// export function Help() {
-// 	return ()
-// }
+export function Help() {
+	return (
+		<div className={styles.help_container}>
+			<Image
+				src="/chat.png"
+				width={15}
+				height={15}
+				alt="Chat"
+				className={styles.help_icon}
+			/>
+			<>Задать вопрос по заказу</>
+		</div>
+	)
+}
 
 
 export default function Page() {
@@ -177,6 +250,8 @@ export default function Page() {
 		    <Photo />
 		    <Order />
 		    <Detail />
+			<Feedback />
+			<Help />
 		</div>
   )
 }

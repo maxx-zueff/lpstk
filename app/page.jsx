@@ -1,6 +1,52 @@
 import Image from 'next/image'
 import styles from './page.module.scss'
 import { manrope } from './fonts'
+import { Slider } from './components/slider'
+
+const contentItems = [
+  [
+    {
+      image: "/offer_1.png",
+      description: "Описание предложения 1.1",
+    },
+    {
+      image: "/offer_1.png",
+      description: "Описание предложения 1.2",
+    },
+    {
+      image: "/offer_1.png",
+      description: "Описание предложения 1.3",
+    }
+  ],
+  [
+    {
+      image: "/offer_1.png",
+      description: "Описание предложения 2.1",
+    },
+    {
+      image: "/offer_1.png",
+      description: "Описание предложения 2.2",
+    },
+    {
+      image: "/offer_1.png",
+      description: "Описание предложения 2.3",
+    },
+    {
+      image: "/offer_1.png",
+      description: "Описание предложения 2.4",
+    }
+  ],
+  [
+    {
+      image: "/offer_1.png",
+      description: "Описание предложения 3.1",
+    },
+    {
+      image: "/offer_1.png",
+      description: "Описание предложения 3.2",
+    }
+  ]     
+]
 
 export function Logo() {
   return (
@@ -24,39 +70,6 @@ export function PickUp() {
       </div>
       <div className={styles.pickup_change}>
         <div>Изменить</div> 
-      </div>
-    </div>
-  )
-}
-
-export function Slider() {
-  const navItems = ["Предложения", "Отзывы", "Промокоды"];
-  const subNavItems = [1, 2, 3];
-
-  return (
-    <div className={styles.slider_container}>
-      <ul className={styles.slider_nav}>
-        {navItems.map((item, index) =>
-          <li key={index} className={index === 0 ? styles.active : ""}>{item}</li>
-        )}
-      </ul>
-      <div className={styles.slider_content}>
-        <div className={styles.slider_image_wrapper}>
-          <Image
-            src="/offer_1.png"
-            alt="Offer image"
-            fill
-            className={styles.image}
-          />
-        </div>
-        <p>Доставляем цветы <span className={styles.bold}>бесплатно</span> по всему городу Ярославль</p>
-      </div>
-      <div>
-        <ul className={styles.slider_subnav}>
-          {subNavItems.map((item, index) =>
-            <li key={index} className={index === 2 ? styles.active : ""}></li>
-          )}
-        </ul>
       </div>
     </div>
   )
@@ -210,7 +223,7 @@ export default function Home() {
     <>
     <Logo />
     <PickUp />
-    <Slider />
+    <Slider contentItems={contentItems}/>
     <Products />
     <Footer />
     <Nav />

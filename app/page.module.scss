@@ -35,6 +35,25 @@
 .slider_container {
   padding: 40px 0;
 
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+
+  .hidden {
+    display: none;
+  }
+
+  .content_active {
+    display: block;
+    animation: fadeIn 1s ease-in-out;
+  }
+
   .slider_nav, .slider_subnav {
     display: flex;
     justify-content: space-evenly;
@@ -42,8 +61,19 @@
     color: #989BA5;
 
     .active {
+
+      @keyframes weightIn {
+        from {
+          font-weight: 400;
+        }
+        to {
+          font-weight: 600;
+        }
+      }
+
       font-weight: 600;
       color: #000;
+      animation: weightIn 0.1s ease-in-out;
     }
   }
 
@@ -59,6 +89,17 @@
     }
 
     .active {
+
+      @keyframes wideIn {
+        from {
+          width: 5px;
+        }
+        to {
+          width: 20px;
+        }
+      }
+
+      animation: wideIn 0.1s ease-in-out;
       background: #1A3046;
       width: 20px;
     }
@@ -68,9 +109,21 @@
     font-weight: 600;
   }
   
+  @keyframes slider_animation {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+
   .slider_content {
+    touch-action: none;
+    position: relative;
     padding: 30px 0;
     display: flex;
+    animation: slider_animation 0.25s ease-in-out;
 
     p {
       font-size: 1rem;
