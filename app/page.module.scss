@@ -149,6 +149,8 @@
 .menu_wrapper {
   padding: 0 30px;
   margin: 0 -30px;
+  overflow: hidden;
+  position: relative;
 }
 
 .menu_container_fixed {
@@ -165,8 +167,15 @@
 
 .menu_container {
   display: flex;
-  overflow: hidden;
+  overflow: auto;
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+  width: 100%;
   background: #fff;
+
+  &::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
 
   .menu_image {
     margin: 0 12px;

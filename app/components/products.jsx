@@ -12,8 +12,12 @@ export function Products() {
 
     const [isFixed, setIsFixed] = useState(false);
     const menuWrapperRef = useRef(null);
+    const menuContainer = useRef(null);
     const [menuWrapperHeight, setMenuWrapperHeight] = useState(0);
-
+    const [activeItemIndex, setActiveItemIndex] = useState(0);
+    const [menuItemWidth, setMenuItemWidth] = useState(0);
+    const [menuContainerScrollX, setMenuContainerScrollX] = useState(0);
+    
     const items = [
       {image: '/item-1.png', price: 2150, title: 'Букет Милан', alt: 'Image of Букет Милан'},
       {image: '/item-2.png', price: 3350, title: 'Букет Пиономания', alt: 'Image of Букет Пиономания'},
@@ -23,18 +27,16 @@ export function Products() {
     ];
   
     const menuItems = [
-      {src: "/menu-item.png", text: "Авторские букеты", isActive: true},
-      {src: "/menu-item2.png", text: "Цветочные композиции"},
-      {src: "/menu-item.png", text: "Свадебные букеты"},
-      {src: "/menu-item4.png", text: "Цветы с конфетами"},
-      {src: "/menu-item.png", text: "Моно букеты"},
+      {src: "/menu-item.png", text: "Авторские букеты", isActive: activeItemIndex === 0},
+      {src: "/menu-item2.png", text: "Цветочные композиции", isActive: activeItemIndex === 1},
+      {src: "/menu-item.png", text: "Свадебные букеты", isActive: activeItemIndex === 2},
+      {src: "/menu-item4.png", text: "Цветы с конфетами", isActive: activeItemIndex === 3},
+      {src: "/menu-item.png", text: "Моно букеты", isActive: activeItemIndex === 4}
     ];
   
     function Menu() {
-
-        
-        
-        
+      
+      
 
         useEffect(() => {
             const handleScroll = () => {
@@ -43,27 +45,35 @@ export function Products() {
                 setIsFixed(sliderPosition <= 0);
             };
 
+            menuContainer.current.scrollLeft = menuContainerScrollX;
+
             window.addEventListener('scroll', handleScroll);
             return () => {
-            window.removeEventListener('scroll', handleScroll);
+              window.removeEventListener('scroll', handleScroll);
             };
         }, []);
-
   
       return (
         <div ref={menuWrapperRef} className={`${styles.menu_wrapper} ${isFixed ? styles.menu_container_fixed : ''}`}>
-            <div className={styles.menu_container}>
+            <div ref={menuContainer} className={styles.menu_container}>
             
             {menuItems.map((item, index) => 
-                <div key={index} className={`${styles.menu_item} ${item.isActive ? styles.active : ""}`}>
-                <Image
-                    src={item.src}
-                    alt={item.text}
-                    width={70}
-                    height={70}                  
-                    className={styles.menu_image}
-                />
-                <p>{item.text}</p>
+                <div 
+                  key={index}
+                  className={`${styles.menu_item} ${item.isActive ? styles.active : ""}`}
+                  onClick={() => {
+                    setMenuContainerScrollX(menuContainer.current.scrollLeft);
+                    setActiveItemIndex(index)
+                  }}
+                >
+                  <Image
+                      src={item.src}
+                      alt={item.text}
+                      width={70}
+                      height={70}                  
+                      className={styles.menu_image}
+                  />
+                  <p>{item.text}</p>
                 </div>
             )}
     
