@@ -17,33 +17,83 @@ export function Products() {
     const [activeItemIndex, setActiveItemIndex] = useState(0);
     const [menuItemWidth, setMenuItemWidth] = useState(0);
     const [menuContainerScrollX, setMenuContainerScrollX] = useState(0);
-    
-    const items = [
-      {image: '/item-1.png', price: 2150, title: 'Букет Милан', alt: 'Image of Букет Милан'},
-      {image: '/item-2.png', price: 3350, title: 'Букет Пиономания', alt: 'Image of Букет Пиономания'},
-      {image: '/item-2.png', price: 3350, title: 'Букет Пиономания', alt: 'Image of Букет Пиономания'},
-      {image: '/item-1.png', price: 2150, title: 'Букет Милан', alt: 'Image of Букет Милан'},
-      {image: '/item-2.png', price: 3350, title: 'Букет Пиономания', alt: 'Image of Букет Пиономания'}
-    ];
-  
-    const menuItems = [
-      {src: "/menu-item.png", text: "Авторские букеты", isActive: activeItemIndex === 0},
-      {src: "/menu-item2.png", text: "Цветочные композиции", isActive: activeItemIndex === 1},
-      {src: "/menu-item.png", text: "Свадебные букеты", isActive: activeItemIndex === 2},
-      {src: "/menu-item4.png", text: "Цветы с конфетами", isActive: activeItemIndex === 3},
-      {src: "/menu-item.png", text: "Моно букеты", isActive: activeItemIndex === 4}
-    ];
+    const selectedItemsHeaderRef = useRef(null);
+
+    const products = [
+      {
+        title: {src: "/menu-item.png", text: "Авторские букеты", isActive: activeItemIndex === 0},
+        items: [
+          {image: '/item-1.png', price: 2150, title: 'Букет Милан', alt: 'Image of Букет Милан'},
+          {image: '/item-2.png', price: 3350, title: 'Букет Пиономания', alt: 'Image of Букет Пиономания'},
+          {image: '/item-2.png', price: 3350, title: 'Букет Пиономания', alt: 'Image of Букет Пиономания'},
+          {image: '/item-1.png', price: 2150, title: 'Букет Милан', alt: 'Image of Букет Милан'},
+          {image: '/item-2.png', price: 3350, title: 'Букет Пиономания', alt: 'Image of Букет Пиономания'}
+        ]
+      },
+      {
+        title: {src: "/menu-item2.png", text: "Цветочные композиции", isActive: activeItemIndex === 1},
+        items: [
+          {image: '/item-1.png', price: 2150, title: 'Букет Милан', alt: 'Image of Букет Милан'},
+          {image: '/item-2.png', price: 3350, title: 'Букет Пиономания', alt: 'Image of Букет Пиономания'},
+          {image: '/item-2.png', price: 3350, title: 'Букет Пиономания', alt: 'Image of Букет Пиономания'},
+          {image: '/item-1.png', price: 2150, title: 'Букет Милан', alt: 'Image of Букет Милан'},
+          {image: '/item-2.png', price: 3350, title: 'Букет Пиономания', alt: 'Image of Букет Пиономания'}
+        ]
+      },
+      {
+        title: {src: "/menu-item.png", text: "Свадебные букеты", isActive: activeItemIndex === 2},
+        items: [
+          {image: '/item-1.png', price: 2150, title: 'Букет Милан', alt: 'Image of Букет Милан'},
+          {image: '/item-2.png', price: 3350, title: 'Букет Пиономания', alt: 'Image of Букет Пиономания'},
+          {image: '/item-2.png', price: 3350, title: 'Букет Пиономания', alt: 'Image of Букет Пиономания'},
+          {image: '/item-1.png', price: 2150, title: 'Букет Милан', alt: 'Image of Букет Милан'},
+          {image: '/item-2.png', price: 3350, title: 'Букет Пиономания', alt: 'Image of Букет Пиономания'}
+        ]
+      },
+      {
+        title: {src: "/menu-item4.png", text: "Цветы с конфетами", isActive: activeItemIndex === 3},
+        items: [
+          {image: '/item-1.png', price: 2150, title: 'Букет Милан', alt: 'Image of Букет Милан'},
+          {image: '/item-2.png', price: 3350, title: 'Букет Пиономания', alt: 'Image of Букет Пиономания'},
+          {image: '/item-2.png', price: 3350, title: 'Букет Пиономания', alt: 'Image of Букет Пиономания'},
+          {image: '/item-1.png', price: 2150, title: 'Букет Милан', alt: 'Image of Букет Милан'},
+          {image: '/item-2.png', price: 3350, title: 'Букет Пиономания', alt: 'Image of Букет Пиономания'}
+        ]
+      },
+      {
+        title: {src: "/menu-item.png", text: "Моно букеты", isActive: activeItemIndex === 4},
+        items: [
+          {image: '/item-1.png', price: 2150, title: 'Букет Милан', alt: 'Image of Букет Милан'},
+          {image: '/item-2.png', price: 3350, title: 'Букет Пиономания', alt: 'Image of Букет Пиономания'},
+          {image: '/item-2.png', price: 3350, title: 'Букет Пиономания', alt: 'Image of Букет Пиономания'},
+          {image: '/item-1.png', price: 2150, title: 'Букет Милан', alt: 'Image of Букет Милан'},
+          {image: '/item-2.png', price: 3350, title: 'Букет Пиономания', alt: 'Image of Букет Пиономания'}
+        ]
+      }
+    ]
   
     function Menu() {
       
-      
+
 
         useEffect(() => {
+          
             const handleScroll = () => {
                 const sliderContent = document.querySelector(`.${styles.slider_content}`);
                 const sliderPosition = sliderContent.getBoundingClientRect().bottom;
                 setIsFixed(sliderPosition <= 0);
+
+                // Update selectedItemsHeaderRef when scrolled to a new items_wrapper
+                // const itemsWrappers = document.querySelectorAll(`.${styles.items_wrapper}`);
+                // itemsWrappers.forEach((wrapper, index) => {
+                //   const wrapperPosition = wrapper.getBoundingClientRect().top;
+                //   if (wrapperPosition <= 0) {
+                //     setActiveItemIndex(index);
+                //   }
+                // });
             };
+
+
 
             menuContainer.current.scrollLeft = menuContainerScrollX;
 
@@ -52,28 +102,38 @@ export function Products() {
               window.removeEventListener('scroll', handleScroll);
             };
         }, []);
+
+        useEffect(() => {
+          if (selectedItemsHeaderRef.current && isFixed) {
+            const scrollOffset = selectedItemsHeaderRef.current.offsetTop - 150;
+            window.scrollTo({
+              top: scrollOffset,
+              behavior: 'smooth'
+            });
+          }
+        }, [activeItemIndex]);
   
       return (
         <div ref={menuWrapperRef} className={`${styles.menu_wrapper} ${isFixed ? styles.menu_container_fixed : ''}`}>
             <div ref={menuContainer} className={styles.menu_container}>
             
-            {menuItems.map((item, index) => 
+            {products.map((item, index) => 
                 <div 
                   key={index}
-                  className={`${styles.menu_item} ${item.isActive ? styles.active : ""}`}
+                  className={`${styles.menu_item} ${item.title.isActive ? styles.active : ""}`}
                   onClick={() => {
                     setMenuContainerScrollX(menuContainer.current.scrollLeft);
                     setActiveItemIndex(index)
                   }}
                 >
                   <Image
-                      src={item.src}
-                      alt={item.text}
+                      src={item.title.src}
+                      alt={item.title.text}
                       width={70}
                       height={70}                  
                       className={styles.menu_image}
                   />
-                  <p>{item.text}</p>
+                  <p>{item.title.text}</p>
                 </div>
             )}
     
@@ -83,8 +143,8 @@ export function Products() {
     }
   
     function Items() {
-        
-        
+      
+      
       
         useEffect(() => {
           if (menuWrapperRef.current) {
@@ -92,44 +152,34 @@ export function Products() {
           }
         }, []);
 
-      return (
-        <div className={styles.items_container} style={{ paddingTop: isFixed ? menuWrapperHeight-30 : 30 }}>
-  
-          <div className={styles.items_header}>
-            <h1>Авторские букеты</h1>
-            <div className={styles.items_sort}>
-              <span>Сортировка</span>
-              <Image
-                src="/sort.png"
-                alt="Сортировка"
-                width={25}
-                height={25}                  
-              />
-            </div>
-          </div>
-  
-          <div className={styles.items_list}>
-  
-          {
-            items.map((item, idx) => (
-              <div className={styles.item} key={idx}>
-                <Image
-                  src={item.image}
-                  alt={item.alt}
-                  fill
-                  className={styles.image}
-                />
-                <div className={styles.items_description}>
-                  <p className={`${styles.items_price} ${manrope.className}`}>{item.price} ₽</p>
-                  <p className={styles.items_title}>{item.title}</p>
+
+
+        return (
+          <div className={styles.items_container} style={{ paddingTop: isFixed ? menuWrapperHeight-60 : 0 }}>
+            {products.map((item, index) => (
+              <div className={styles.items_wrapper} ref={activeItemIndex === index ? selectedItemsHeaderRef : null}>
+              <div className={styles.items_header} key={index}>
+                <h1>{item.title.text}</h1>
+                <div className={styles.items_sort}>
+                  <span>Сортировка</span>
+                  <Image src="/sort.png" alt="Сортировка" width={25} height={25} />
                 </div>
               </div>
-            ))
-          }
-            
+              <div className={styles.items_list}>
+                {item.items.map((item, idx) => (
+                  <div className={styles.item} key={idx}>
+                    <Image src={item.image} alt={item.alt} fill className={styles.image} />
+                    <div className={styles.items_description}>
+                      <p className={`${styles.items_price} ${manrope.className}`}>{item.price} ₽</p>
+                      <p className={styles.items_title}>{item.title}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              </div>
+            ))}
           </div>
-        </div>
-      )
+        );
     }  
   
     return (<><Menu /><Items /></>)
