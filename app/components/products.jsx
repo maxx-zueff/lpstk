@@ -18,6 +18,8 @@ export function Products() {
     const [menuItemWidth, setMenuItemWidth] = useState(0);
     const [menuContainerScrollX, setMenuContainerScrollX] = useState(0);
     const selectedItemsHeaderRef = useRef(null);
+    const [isScrolling, setIsScrolling] = useState(false);
+    const menuItemRefs = useRef([]);
 
     const products = [
       {
@@ -74,26 +76,44 @@ export function Products() {
   
     function Menu() {
       
+      // useEffect(() => {
+      //   if (menuItemRefs.current[activeItemIndex]) {
+      //     const menuItem = menuItemRefs.current[activeItemIndex];
+      //     const menuContainerRect = menuContainer.current.getBoundingClientRect();
+      //     const menuItemRect = menuItem.getBoundingClientRect();
 
+      //     // Check if the menu item is not fully visible
+      //     if (menuItemRect.left < menuContainerRect.left || menuItemRect.right > menuContainerRect.right) {
+      //       // Scroll the menu item into view
+      //       console.log(menuItem.scrollIntoView)
+      //       setTimeout(() => {
+      //         menuItem.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      //         setMenuContainerScrollX(menuContainer.current.scrollLeft)
+      //       }, 300);         
+      //     }
+      //   }
+      // }, [activeItemIndex]);
 
         useEffect(() => {
+
+          console.log(activeItemIndex)
           
             const handleScroll = () => {
                 const sliderContent = document.querySelector(`.${styles.slider_content}`);
                 const sliderPosition = sliderContent.getBoundingClientRect().bottom;
                 setIsFixed(sliderPosition <= 0);
 
-                // Update selectedItemsHeaderRef when scrolled to a new items_wrapper
-                // const itemsWrappers = document.querySelectorAll(`.${styles.items_wrapper}`);
-                // itemsWrappers.forEach((wrapper, index) => {
-                //   const wrapperPosition = wrapper.getBoundingClientRect().top;
-                //   if (wrapperPosition <= 0) {
-                //     setActiveItemIndex(index);
-                //   }
-                // });
+                if (!isScrolling) {
+                  const itemsWrappers = document.querySelectorAll(`.${styles.items_wrapper}`);
+                  itemsWrappers.forEach((wrapper, index) => {
+                    const wrapperPosition = wrapper.getBoundingClientRect().top;
+                    if (wrapperPosition <= 160) {
+                      setActiveItemIndex(index);
+                    }
+                  });
+                  
+                }
             };
-
-
 
             menuContainer.current.scrollLeft = menuContainerScrollX;
 
@@ -104,12 +124,16 @@ export function Products() {
         }, []);
 
         useEffect(() => {
-          if (selectedItemsHeaderRef.current && isFixed) {
+
+          if (selectedItemsHeaderRef.current && isFixed && isScrolling) {
             const scrollOffset = selectedItemsHeaderRef.current.offsetTop - 150;
             window.scrollTo({
               top: scrollOffset,
               behavior: 'smooth'
             });
+            setTimeout(() => {
+              setIsScrolling(false);
+            }, 500);
           }
         }, [activeItemIndex]);
   
@@ -120,10 +144,12 @@ export function Products() {
             {products.map((item, index) => 
                 <div 
                   key={index}
+                  ref={el => menuItemRefs.current[index] = el}
                   className={`${styles.menu_item} ${item.title.isActive ? styles.active : ""}`}
                   onClick={() => {
                     setMenuContainerScrollX(menuContainer.current.scrollLeft);
-                    setActiveItemIndex(index)
+                    setIsScrolling(true);
+                    setActiveItemIndex(index);
                   }}
                 >
                   <Image
