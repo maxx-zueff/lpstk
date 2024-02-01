@@ -147,15 +147,14 @@
 }
 
 .menu_wrapper {
-  padding: 0 30px;
-  margin: 0 -30px;
-  overflow: auto;
+  height: 110px;
+  width: 100%;
   position: relative;
+  overflow-x: hidden;
 }
 
 .menu_container_fixed {
   position: fixed;
-  overflow: auto;
   top: 0;
   left: 0;
   width: 100%;
@@ -167,15 +166,11 @@
 
 .menu_container {
   display: flex;
-  overflow: auto;
-  -ms-overflow-style: none;  /* Internet Explorer 10+ */
-  scrollbar-width: none;  /* Firefox */
+  position: absolute;
+    top: 0;
+    left: 0;
   width: 100%;
   background: #fff;
-
-  &::-webkit-scrollbar { 
-    display: none;  /* Safari and Chrome */
-}
 
   .menu_image {
     margin: 0 12px;
