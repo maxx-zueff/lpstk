@@ -34,6 +34,7 @@
 
 .slider_container {
   padding: 40px 0;
+  position: relative;
 
   @keyframes fadeIn {
     from {
@@ -119,7 +120,6 @@
   }
 
   .slider_content {
-    touch-action: none;
     position: relative;
     padding: 30px 0;
     display: flex;

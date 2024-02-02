@@ -54,17 +54,16 @@ function Menu({ activeItemIndex, isFixed, isScrolling, setIsScrolling, setActive
       const activeItemWidth = activeItem.offsetWidth;
       const menuContainerWidth = menuContainer.current.offsetWidth;
       const deltaRight = menuWrapperRef.current.offsetWidth - menuContainer.current.scrollWidth;
-  
+
+      
       let newLeft = currentTranslate;
-  
+      
       if (activeItemPosition + activeItemWidth > menuContainerWidth) {
         newLeft = currentTranslate - (activeItemPosition + activeItemWidth - menuContainerWidth);
+      
       } else if (activeItemPosition < 0) {
-        newLeft = currentTranslate - activeItemPosition;
-      }
-  
-      if (newLeft > 0) {
-        newLeft = 0;
+        // activeItemPosition на 30px дальше от фактического края
+        newLeft = currentTranslate - activeItemPosition + 30;
       }
   
       if (newLeft < deltaRight) {
@@ -92,7 +91,7 @@ function Menu({ activeItemIndex, isFixed, isScrolling, setIsScrolling, setActive
               key={index}
               ref={(el) => (menuItemRefs.current[index] = el)}
               className={`${styles.menu_item} ${
-                item.title.isActive ? styles.active : ''
+                item.title.isActive == activeItemIndex ? styles.active : ''
               }`}
               onClick={() => {
                 setIsScrolling(true);
@@ -115,16 +114,32 @@ function Menu({ activeItemIndex, isFixed, isScrolling, setIsScrolling, setActive
   );
 }
 
-function Items({ activeItemIndex, isFixed, menuWrapperHeight,products,selectedItemsHeaderRef }) {
+function Items({ activeItemIndex, isFixed, menuWrapperHeight,products,setProducts,selectedItemsHeaderRef }) {
+  
+  const [sortOrder, setSortOrder] = useState('asc');
+  const newProducts = [...products];
+
+  const sortItems = (productIndex) => {
+    setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+    newProducts[productIndex].items.sort((a, b) => {
+      if (sortOrder === 'asc') {
+        return a.price - b.price;
+      } else {
+        return b.price - a.price;
+      }
+    });
+    setProducts(newProducts);
+  };
+ 
   return (
-    <div className={styles.items_container} style={{ paddingTop: isFixed ? menuWrapperHeight - 60 : 0 }}>
+    <div className={styles.items_container} style={{ paddingTop: isFixed ? menuWrapperHeight - 10 : 0 }}>
       {products.map((item, index) => (
         <div className={styles.items_wrapper} ref={activeItemIndex === index ? selectedItemsHeaderRef : null}>
           <div className={styles.items_header} key={index}>
             <h1>{item.title.text}</h1>
-            <div className={styles.items_sort}>
+            <div className={styles.items_sort} onClick={() => sortItems(index)}>
               <span>Сортировка</span>
-              <Image src="/sort.png" alt="Сортировка" width={25} height={25} />
+              <Image src={sortOrder == 'desc' ? "/sort-up.png": "/sort-down.png"} alt="Сортировка" width={25} height={25} />
             </div>
           </div>
           <div className={styles.items_list}>
@@ -156,9 +171,9 @@ export function Products() {
     const menuItemRefs = useRef([]);
     // const [leftStyle, setLeftStyle] = useState(0);
 
-    const products = [
+    const [products, setProducts] = useState([
       {
-        title: {src: "/menu-item.png", text: "Авторские букеты", isActive: activeItemIndex === 0},
+        title: {src: "/menu-item.png", text: "Авторские букеты", isActive: 0},
         items: [
           {image: '/item-1.png', price: 2150, title: 'Букет Милан', alt: 'Image of Букет Милан'},
           {image: '/item-2.png', price: 3350, title: 'Букет Пиономания', alt: 'Image of Букет Пиономания'},
@@ -168,7 +183,7 @@ export function Products() {
         ]
       },
       {
-        title: {src: "/menu-item2.png", text: "Цветочные композиции", isActive: activeItemIndex === 1},
+        title: {src: "/menu-item2.png", text: "Цветочные композиции", isActive: 1},
         items: [
           {image: '/item-1.png', price: 2150, title: 'Букет Милан', alt: 'Image of Букет Милан'},
           {image: '/item-2.png', price: 3350, title: 'Букет Пиономания', alt: 'Image of Букет Пиономания'},
@@ -178,7 +193,7 @@ export function Products() {
         ]
       },
       {
-        title: {src: "/menu-item.png", text: "Свадебные букеты", isActive: activeItemIndex === 2},
+        title: {src: "/menu-item.png", text: "Свадебные букеты", isActive: 2},
         items: [
           {image: '/item-1.png', price: 2150, title: 'Букет Милан', alt: 'Image of Букет Милан'},
           {image: '/item-2.png', price: 3350, title: 'Букет Пиономания', alt: 'Image of Букет Пиономания'},
@@ -188,7 +203,7 @@ export function Products() {
         ]
       },
       {
-        title: {src: "/menu-item4.png", text: "Цветы с конфетами", isActive: activeItemIndex === 3},
+        title: {src: "/menu-item4.png", text: "Цветы с конфетами", isActive: 3},
         items: [
           {image: '/item-1.png', price: 2150, title: 'Букет Милан', alt: 'Image of Букет Милан'},
           {image: '/item-2.png', price: 3350, title: 'Букет Пиономания', alt: 'Image of Букет Пиономания'},
@@ -198,7 +213,7 @@ export function Products() {
         ]
       },
       {
-        title: {src: "/menu-item.png", text: "Моно букеты", isActive: activeItemIndex === 4},
+        title: {src: "/menu-item.png", text: "Моно букеты", isActive: 4},
         items: [
           {image: '/item-1.png', price: 2150, title: 'Букет Милан', alt: 'Image of Букет Милан'},
           {image: '/item-2.png', price: 3350, title: 'Букет Пиономания', alt: 'Image of Букет Пиономания'},
@@ -207,7 +222,7 @@ export function Products() {
           {image: '/item-2.png', price: 3350, title: 'Букет Пиономания', alt: 'Image of Букет Пиономания'}
         ]
       }
-    ]
+    ]);
 
     useEffect(() => {
 
@@ -235,7 +250,6 @@ export function Products() {
               setIsFixed(sliderPosition <= 0);
 
               if (!isScrolling) {
-                console.log(isScrolling)
                 const itemsWrappers = document.querySelectorAll(`.${styles.items_wrapper}`);
                 itemsWrappers.forEach((wrapper, index) => {
                   const wrapperPosition = wrapper.getBoundingClientRect().top;
@@ -282,7 +296,8 @@ export function Products() {
           isFixed={isFixed}
           menuWrapperHeight={menuWrapperHeight}
           products={products}
-          selectedItemsHeaderRef={selectedItemsHeaderRef}  
+          setProducts={setProducts}
+          selectedItemsHeaderRef={selectedItemsHeaderRef}
         />
       </>
     );
