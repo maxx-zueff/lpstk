@@ -5,6 +5,7 @@ import styles from "../page.module.scss";
 import { manrope } from "../fonts";
 import { useState, useEffect, useRef } from "react";
 import { compileString } from "sass";
+import Link from 'next/link'
 
 function Menu({ activeItemIndex, isFixed, isScrolling, setIsScrolling, setActiveItemIndex, menuItemRefs,menuWrapperRef, menuContainer, products}) {
   const [startPosition, setStartPosition] = useState(0);
@@ -117,6 +118,7 @@ function Menu({ activeItemIndex, isFixed, isScrolling, setIsScrolling, setActive
 function Items({ activeItemIndex, isFixed, menuWrapperHeight,products,setProducts,selectedItemsHeaderRef }) {
   
   const [sortOrder, setSortOrder] = useState('asc');
+  const [clickedItemIndex, setClickedItemIndex] = useState(null);
   const newProducts = [...products];
 
   const sortItems = (productIndex) => {
@@ -144,13 +146,23 @@ function Items({ activeItemIndex, isFixed, menuWrapperHeight,products,setProduct
           </div>
           <div className={styles.items_list}>
             {item.items.map((item, idx) => (
-              <div className={styles.item} key={idx}>
+              
+              <div
+                className={`${styles.item} ${clickedItemIndex === index ? styles.clicked : ''}`} 
+                key={idx}
+                onClick={() => {
+                  setClickedItemIndex(index);
+                }}
+              >
+                <Link href={`/${item.item}`}>
                 <Image src={item.image} alt={item.alt} fill className={styles.image} />
                 <div className={styles.items_description}>
                   <p className={`${styles.items_price} ${manrope.className}`}>{item.price} ₽</p>
                   <p className={styles.items_title}>{item.title}</p>
                 </div>
+                </Link>
               </div>
+              
             ))}
           </div>
         </div>
@@ -175,51 +187,51 @@ export function Products() {
       {
         title: {src: "/menu-item.png", text: "Авторские букеты", isActive: 0},
         items: [
-          {image: '/item-1.png', price: 2150, title: 'Букет Милан', alt: 'Image of Букет Милан'},
-          {image: '/item-2.png', price: 3350, title: 'Букет Пиономания', alt: 'Image of Букет Пиономания'},
-          {image: '/item-2.png', price: 3350, title: 'Букет Пиономания', alt: 'Image of Букет Пиономания'},
-          {image: '/item-1.png', price: 2150, title: 'Букет Милан', alt: 'Image of Букет Милан'},
-          {image: '/item-2.png', price: 3350, title: 'Букет Пиономания', alt: 'Image of Букет Пиономания'}
+          {image: '/item-1.png', price: 2150, title: 'Букет Милан', alt: 'Image of Букет Милан', item: 1},
+          {image: '/item-2.png', price: 3350, title: 'Букет Пиономания', alt: 'Image of Букет Пиономания', item: 2},
+          {image: '/item-2.png', price: 3350, title: 'Букет Пиономания', alt: 'Image of Букет Пиономания', item: 3},
+          {image: '/item-1.png', price: 2150, title: 'Букет Милан', alt: 'Image of Букет Милан', item: 4},
+          {image: '/item-2.png', price: 3350, title: 'Букет Пиономания', alt: 'Image of Букет Пиономания', item: 5}
         ]
       },
       {
         title: {src: "/menu-item2.png", text: "Цветочные композиции", isActive: 1},
         items: [
-          {image: '/item-1.png', price: 2150, title: 'Букет Милан', alt: 'Image of Букет Милан'},
-          {image: '/item-2.png', price: 3350, title: 'Букет Пиономания', alt: 'Image of Букет Пиономания'},
-          {image: '/item-2.png', price: 3350, title: 'Букет Пиономания', alt: 'Image of Букет Пиономания'},
-          {image: '/item-1.png', price: 2150, title: 'Букет Милан', alt: 'Image of Букет Милан'},
-          {image: '/item-2.png', price: 3350, title: 'Букет Пиономания', alt: 'Image of Букет Пиономания'}
+          {image: '/item-1.png', price: 2150, title: 'Букет Милан', alt: 'Image of Букет Милан', item:6},
+          {image: '/item-2.png', price: 3350, title: 'Букет Пиономания', alt: 'Image of Букет Пиономания', item:7},
+          {image: '/item-2.png', price: 3350, title: 'Букет Пиономания', alt: 'Image of Букет Пиономания', item:8},
+          {image: '/item-1.png', price: 2150, title: 'Букет Милан', alt: 'Image of Букет Милан', item:9},
+          {image: '/item-2.png', price: 3350, title: 'Букет Пиономания', alt: 'Image of Букет Пиономания', item:10}
         ]
       },
       {
         title: {src: "/menu-item.png", text: "Свадебные букеты", isActive: 2},
         items: [
-          {image: '/item-1.png', price: 2150, title: 'Букет Милан', alt: 'Image of Букет Милан'},
-          {image: '/item-2.png', price: 3350, title: 'Букет Пиономания', alt: 'Image of Букет Пиономания'},
-          {image: '/item-2.png', price: 3350, title: 'Букет Пиономания', alt: 'Image of Букет Пиономания'},
-          {image: '/item-1.png', price: 2150, title: 'Букет Милан', alt: 'Image of Букет Милан'},
-          {image: '/item-2.png', price: 3350, title: 'Букет Пиономания', alt: 'Image of Букет Пиономания'}
+          {image: '/item-1.png', price: 2150, title: 'Букет Милан', alt: 'Image of Букет Милан', item:11},
+          {image: '/item-2.png', price: 3350, title: 'Букет Пиономания', alt: 'Image of Букет Пиономания',item:12},
+          {image: '/item-2.png', price: 3350, title: 'Букет Пиономания', alt: 'Image of Букет Пиономания',item:13},
+          {image: '/item-1.png', price: 2150, title: 'Букет Милан', alt: 'Image of Букет Милан',item:14},
+          {image: '/item-2.png', price: 3350, title: 'Букет Пиономания', alt: 'Image of Букет Пиономания',item:15}
         ]
       },
       {
         title: {src: "/menu-item4.png", text: "Цветы с конфетами", isActive: 3},
         items: [
-          {image: '/item-1.png', price: 2150, title: 'Букет Милан', alt: 'Image of Букет Милан'},
-          {image: '/item-2.png', price: 3350, title: 'Букет Пиономания', alt: 'Image of Букет Пиономания'},
-          {image: '/item-2.png', price: 3350, title: 'Букет Пиономания', alt: 'Image of Букет Пиономания'},
-          {image: '/item-1.png', price: 2150, title: 'Букет Милан', alt: 'Image of Букет Милан'},
-          {image: '/item-2.png', price: 3350, title: 'Букет Пиономания', alt: 'Image of Букет Пиономания'}
+          {image: '/item-1.png', price: 2150, title: 'Букет Милан', alt: 'Image of Букет Милан', item:16},
+          {image: '/item-2.png', price: 3350, title: 'Букет Пиономания', alt: 'Image of Букет Пиономания',item:17},
+          {image: '/item-2.png', price: 3350, title: 'Букет Пиономания', alt: 'Image of Букет Пиономания',item:18},
+          {image: '/item-1.png', price: 2150, title: 'Букет Милан', alt: 'Image of Букет Милан',item:19},
+          {image: '/item-2.png', price: 3350, title: 'Букет Пиономания', alt: 'Image of Букет Пиономания',item:20}
         ]
       },
       {
         title: {src: "/menu-item.png", text: "Моно букеты", isActive: 4},
         items: [
-          {image: '/item-1.png', price: 2150, title: 'Букет Милан', alt: 'Image of Букет Милан'},
-          {image: '/item-2.png', price: 3350, title: 'Букет Пиономания', alt: 'Image of Букет Пиономания'},
-          {image: '/item-2.png', price: 3350, title: 'Букет Пиономания', alt: 'Image of Букет Пиономания'},
-          {image: '/item-1.png', price: 2150, title: 'Букет Милан', alt: 'Image of Букет Милан'},
-          {image: '/item-2.png', price: 3350, title: 'Букет Пиономания', alt: 'Image of Букет Пиономания'}
+          {image: '/item-1.png', price: 2150, title: 'Букет Милан', alt: 'Image of Букет Милан',item:21},
+          {image: '/item-2.png', price: 3350, title: 'Букет Пиономания', alt: 'Image of Букет Пиономания',item:22},
+          {image: '/item-2.png', price: 3350, title: 'Букет Пиономания', alt: 'Image of Букет Пиономания',item:23},
+          {image: '/item-1.png', price: 2150, title: 'Букет Милан', alt: 'Image of Букет Милан',item:24},
+          {image: '/item-2.png', price: 3350, title: 'Букет Пиономания', alt: 'Image of Букет Пиономания',item:25}
         ]
       }
     ]);

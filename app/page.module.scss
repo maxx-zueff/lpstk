@@ -232,9 +232,26 @@
     flex-wrap: wrap;
     margin: -15px -15px;
 
+    @keyframes item_animation {
+      from {
+        background: linear-gradient(225deg, #f2f4f5 0%, #e9ffe4 100%);
+      }
+      to {
+        background: linear-gradient(45deg, #CFE7FF, #F2F4F5);
+      }
+    }  
+
     .item {
       width: 50%;
       padding: 15px;
+
+      -webkit-tap-highlight-color: transparent;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
 
       .image {
         object-fit: contain;
@@ -243,6 +260,11 @@
         height: unset !important; 
         border-radius: 8px;
         background: linear-gradient(225deg, #f2f4f5 0%, #e9ffe4 100%);
+      }
+
+      .clicked {
+        .items_price {color: #000 !important; }
+        .image { animation: item_animation 0.25s ease-in-out; }
       }
 
       .items_description {
