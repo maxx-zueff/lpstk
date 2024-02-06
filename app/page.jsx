@@ -3,6 +3,7 @@ import styles from './page.module.scss'
 import { manrope } from './fonts'
 import { Slider } from './components/slider'
 import { Products } from './components/products'
+import Link from 'next/link'
 
 const contentItems = [
   [
@@ -83,7 +84,7 @@ export function Footer() {
     <div className={styles.footer_container}>
       <p className={styles.footer_tagline}>Букеты быстро и со вкусом</p>
       <p className={`${styles.footer_phone} ${manrope.className}`}>+7 (929) 076 42 95</p>
-      <p className={styles.footer_about}>Узнать больше о нас</p>
+      <Link href="/about" className={styles.footer_about}>Узнать больше о нас</Link>
       <Image
         className={styles.footer_social}
         src="/social.png"
