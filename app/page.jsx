@@ -100,6 +100,7 @@ export function Footer() {
 export function Nav() {
   return (
     <div className={styles.nav_container}>
+      <Link href="/">
       <div className={styles.nav_item}>
         <Image
           src="/home.svg"
@@ -107,31 +108,39 @@ export function Nav() {
           width={25}
           height={25}                  
         />
-      </div>  
-      <div className={styles.nav_item}>
-        <Image
-          src="/profile.svg"
-          alt="Профиль"
-          width={25}
-          height={25}                  
-        />
       </div>
-      <div className={styles.nav_item}>
-        <Image
-          src="/search.svg"
-          alt="Поиск"
-          width={25}
-          height={25}                  
-        />
-      </div>  
-      <div className={`${styles.nav_item} ${styles.active}`}>
-        <Image
-          src="/basket.svg"
-          alt="Корзина"
-          width={25}
-          height={25}                  
-        />
-      </div>
+      </Link>
+      <Link href="/profile">
+        <div className={styles.nav_item}>
+          <Image
+            src="/profile.svg"
+            alt="Профиль"
+            width={25}
+            height={25}                  
+          />
+        </div>
+      </Link>
+      <Link href="/search">
+        <div className={styles.nav_item}>
+          <Image
+            src="/search.svg"
+            alt="Поиск"
+            width={25}
+            height={25}                  
+          />
+        </div>  
+      </Link>
+      <Link href="/basket">
+        <div className={`${styles.nav_item} ${styles.active}`}>
+          <Image
+            src="/basket.svg"
+            alt="Корзина"
+            width={25}
+            height={25}                  
+          />
+          <span className={`${styles.count}  ${manrope.className}`}>+ {2}</span>
+        </div>
+      </Link>
 
     </div>
   )
@@ -141,7 +150,7 @@ export default function Home() {
   return (
     <>
     <Logo />
-    <PickUp />
+    {/* <PickUp /> */}
     <Slider contentItems={contentItems}/>
     <Products />
     <Footer />

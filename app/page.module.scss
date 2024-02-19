@@ -3,7 +3,7 @@
 .logo {
   display: flex;
   justify-content: center;
-  padding: 30px 0;
+  padding: 30px 0 40px 0; 
 }
 
 .pickup_container {
@@ -33,7 +33,7 @@
 }
 
 .slider_container {
-  padding: 40px 0;
+  padding-bottom: 40px;
   position: relative;
 
   @keyframes fadeIn {
@@ -328,9 +328,15 @@
   justify-content: space-between;
   padding: 0 30px;
   border-radius: 20px 20px 0 0;
+  color: #fff;
 
   .nav_item {
     padding: 5px 10px 2px 10px;
+
+    .count {
+      padding-left: 10px;
+      // font-size: 1rem;
+    }
   }
 
   .active {
