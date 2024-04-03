@@ -136,8 +136,8 @@ function Items({ activeItemIndex, isFixed, menuWrapperHeight,products,setProduct
   return (
     <div className={styles.items_container} style={{ paddingTop: isFixed ? menuWrapperHeight - 10 : 0 }}>
       {products.map((item, index) => (
-        <div className={styles.items_wrapper} ref={activeItemIndex === index ? selectedItemsHeaderRef : null}>
-          <div className={styles.items_header} key={index}>
+        <div className={styles.items_wrapper} key={index} ref={activeItemIndex === index ? selectedItemsHeaderRef : null}>
+          <div className={styles.items_header}>
             <h1>{item.title.text}</h1>
             <div className={styles.items_sort} onClick={() => sortItems(index)}>
               <span>Сортировка</span>

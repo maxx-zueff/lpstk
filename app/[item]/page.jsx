@@ -36,9 +36,8 @@ export function Photos() {
       </div>
       <div className={styles.photos_list}>
         {images.map((image, index) => (
-          <div className={styles.photos_item} >
+          <div key={index} className={styles.photos_item} >
             <Image
-              key={index}
               src={image.src}
               fill
               className={`${styles.image} ${image.active ? styles.active : ''}`}

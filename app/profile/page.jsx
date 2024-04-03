@@ -1,16 +1,21 @@
 import Image from 'next/image'
 import styles from './page.module.scss'
 import { manrope } from '../fonts'
+import Link from 'next/link'
+
+let orders = [14551, 14542];
 
 export function Header() {
 	return (
 		<div className={styles.header_container}>
-			<Image
-				src="/back.svg"
-				width={30}
-				height={30}
-				alt="Back"
-			/>
+			<Link href="/">
+				<Image
+					src="/back.svg"
+					width={30}
+					height={30}
+					alt="Back"
+				/>
+			</Link>
 			<p className={styles.header_title}>
 				Личный кабинет
 			</p>
@@ -34,12 +39,14 @@ export function Profile() {
 					<p>153 бонуса</p>
 				</div>
 			</div>
-			<Image
-				src="/edit.svg"
-				width={30}
-				height={30}
-				alt="Edit"
-			/>
+			<Link href="/profile/edit">
+				<Image
+					src="/edit.svg"
+					width={30}
+					height={30}
+					alt="Edit"
+				/>
+			</Link>
 		</div>
 	)
 }
@@ -50,6 +57,7 @@ export function Orders() {
 			<h1>История заказов</h1>
 			<div>
 
+				<Link href={`/order/${orders[0]}`}>
 				<div className={styles.order}>
 					<div className={styles.order_container}>
 						<Image
@@ -72,6 +80,8 @@ export function Orders() {
 						className={styles.order_detail}
 					/>			
 				</div>
+				</Link>
+				<Link href={`/order/${orders[1]}`}>
 				<div className={`${styles.order} ${styles.active}`}>
 					<div className={styles.order_container}>
 						<Image
@@ -94,6 +104,7 @@ export function Orders() {
 						className={styles.order_detail}
 					/>			
 				</div>
+				</Link>
 			</div>
 		</div>
 	)

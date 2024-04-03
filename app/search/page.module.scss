@@ -44,6 +44,32 @@
     }
 }
 
+.match_container {
+    padding-top: 100px;
+
+    .match_header {
+        font-size: 1rem;
+        font-weight: 600;
+    }
+
+   .match_items {
+    padding-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: -10px;
+
+        .match_item {
+            cursor: pointer;
+            padding: 10px 20px;
+            background: #F2F4F5;
+            color: #59ADFF;
+            border-radius: 20px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+   }
+}
+
 .lastsearch_container {
     padding-top: 100px;
 

@@ -9,6 +9,6 @@ export const raleway = Raleway({
 
 export const manrope = Manrope({
   subsets: ['cyrillic'],
-  weight: ['700'],
+  weight: ['700', '300'],
   display: 'swap'
 })
