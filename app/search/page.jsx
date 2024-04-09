@@ -5,6 +5,7 @@ import styles from './page.module.scss'
 import { manrope } from '../fonts'
 import { useState } from 'react';
 import Fuse from 'fuse.js';
+import Link from 'next/link'
 
 const popularItems = [
     {
@@ -12,42 +13,48 @@ const popularItems = [
         title: "Букет Элегант",
         price: 2150,
         description: "Авторский букет",
-        flowers: ['розы', 'ромашки', 'хризантемы', 'лилии']
+        flowers: ['розы', 'ромашки', 'хризантемы', 'лилии'],
+        id: 1
     },
     {
         imageSrc: "/item-2.png",
         title: "Букет Милан",
         price: 2150,
         description: "Моно букет",
-        flowers: ['розы', 'ромашки', 'хризантемы', 'лилии']
+        flowers: ['розы', 'ромашки', 'хризантемы', 'лилии'],
+        id: 12
     },
     {
         imageSrc: "/bouqet1.png",
         title: "Букет Премиум",
         price: 2150,
         description: "Композиция",
-        flowers: ['розы', 'ромашки', 'хризантемы', 'лилии']
+        flowers: ['розы', 'ромашки', 'хризантемы', 'лилии'],
+        id: 13
     },
     {
         imageSrc: "/item-2.png",
         title: "Букет Прелесть",
         price: 2150,
         description: "Авторский букет",
-        flowers: ['розы', 'ромашки', 'хризантемы', 'лилии']
+        flowers: ['розы', 'ромашки', 'хризантемы', 'лилии'],
+        id: 14
     },
     {
         imageSrc: "/bouqet1.png",
         title: "Букет Восторг",
         price: 2150,
         description: "Авторский букет",
-        flowers: ['розы', 'ромашки', 'хризантемы', 'лилии']
+        flowers: ['розы', 'ромашки', 'хризантемы', 'лилии'],
+        id: 15
     },
     {
         imageSrc: "/item-2.png",
         title: "Букет Роза",
         price: 2150,
         description: "Авторский букет",
-        flowers: ['розы', 'ромашки', 'хризантемы', 'лилии']
+        flowers: ['розы', 'ромашки', 'хризантемы', 'лилии'],
+        id: 16
     }
 ]
 
@@ -57,74 +64,73 @@ const allItems = [
         title: "Букет Элегант",
         price: 2150,
         description: "Авторский букет",
-        flowers: ['розы', 'ромашки', 'хризантемы', 'лилии']
+        flowers: ['розы', 'ромашки', 'хризантемы', 'лилии'],
+        id: 1
     },
     {
         imageSrc: "/item-2.png",
         title: "Букет Милан",
         price: 2150,
         description: "Моно букет",
-        flowers: ['розы', 'ромашки', 'хризантемы', 'лилии']
+        flowers: ['розы', 'ромашки', 'хризантемы', 'лилии'],
+        id: 12
     },
     {
         imageSrc: "/bouqet1.png",
         title: "Букет Премиум",
         price: 2150,
         description: "Композиция",
-        flowers: ['розы', 'ромашки', 'хризантемы', 'лилии']
+        flowers: ['розы', 'ромашки', 'хризантемы', 'лилии'],
+        id: 13
     },
     {
         imageSrc: "/item-2.png",
         title: "Букет Прелесть",
         price: 2150,
         description: "Авторский букет",
-        flowers: ['розы', 'ромашки', 'хризантемы', 'лилии']
+        flowers: ['розы', 'ромашки', 'хризантемы', 'лилии'],
+        id: 14
     },
     {
         imageSrc: "/bouqet1.png",
         title: "Букет Восторг",
         price: 2150,
         description: "Авторский букет",
-        flowers: ['розы', 'ромашки', 'хризантемы', 'лилии']
+        flowers: ['розы', 'ромашки', 'хризантемы', 'лилии'],
+        id: 15
     },
     {
         imageSrc: "/item-2.png",
         title: "Букет Роза",
         price: 2150,
         description: "Авторский букет",
-        flowers: ['розы', 'ромашки', 'хризантемы', 'лилии']
+        flowers: ['розы', 'ромашки', 'хризантемы', 'лилии'],
+        id: 16
     }
 ]
 
 
-function Header({ inputValue, setInputValue, matches, setMatches, result, setResult}) {
-    
-    const searchOptions = allItems.flatMap(bouquet => [bouquet.title, bouquet.description, ...bouquet.flowers]);
-    const _searchOptions = [...new Set(searchOptions)];
-    
-    const fuse = new Fuse(_searchOptions, { threshold: 0.3, keys: ['title'] });
-    const fuse_2 = new Fuse(allItems, { threshold: 0.3, keys: ['title', 'description', 'flowers'] });
 
+function Header({ inputValue, setInputValue, matches, setMatches, result, setResult, upResult}) {
+    
+    
     const handleInputChange = (e) => {
         const value = e.target.value;
         setInputValue(value);
-
-        const filteredMatches = fuse.search(value).map(result => result.item);
-        const filteredMatches_2 = fuse_2.search(value).map(result => result.item);
-        
-        setMatches(filteredMatches);
-        setResult(filteredMatches_2)
+        upResult(value);
     };
 
 	return (
 
         <div className={styles.header_container}>
-			<Image
+            <Link href="/">
+            <Image
 				src="/back.svg"
 				width={30}
 				height={30}
 				alt="Back"
 			/>
+            </Link>
 			<div className={styles.header_search}>
                 <Image
                     src="/search-grey.png"
@@ -167,18 +173,22 @@ function Match({matches}) {
     )
 }
 
-function LastSearch() {
+function LastSearch({ searchItems, setInputValue, upResult }) {
+
+    function handleClick(value) {
+        setInputValue(value);
+        upResult(value)
+    }
+    
     return (
         <div className={styles.lastsearch_container}>
              <h1 className={styles.lastsearch_header}>
                 Недавние запросы
              </h1>
             <div className={styles.lastsearch_items}>
-             <div className={styles.lastsearch_item}>розы</div>
-             <div className={styles.lastsearch_item}>хризантемы</div>
-             <div className={styles.lastsearch_item}>композиции</div>
-             <div className={styles.lastsearch_item}>монобукет</div>
-             <div className={styles.lastsearch_item}>лилии</div>
+                {searchItems.map((item, index) => (
+                    <div key={index} className={styles.lastsearch_item} onClick={() => handleClick(item)}>{item}</div>
+                ))}
             </div>
         </div>
     )
@@ -192,6 +202,7 @@ function Popular() {
                 Популярные букеты
             </h1>
             {popularItems.map((item, index) => (
+                <Link href={`/${item.id}`}>
                 <div className={styles.popular_items} key={index}>
                     <div className={styles.popular_item}>
                         <Image
@@ -212,6 +223,7 @@ function Popular() {
                         
                     </div>
                 </div>
+                </Link>
             ))}
         </div>
     )
@@ -226,6 +238,7 @@ function SearchResult({result}) {
             Найдено <span className={manrope.className}>{result.length}</span> товаров
             </h1>
             {result.map((item, index) => (
+                <Link href={`/${item.id}`}>
                 <div className={styles.popular_items} key={index}>
                     <div className={styles.popular_item}>
                         <Image
@@ -246,6 +259,7 @@ function SearchResult({result}) {
                         
                     </div>
                 </div>
+                </Link>
             ))}
         </div>
     )
@@ -256,14 +270,30 @@ export default function Page() {
     const [inputValue, setInputValue] = useState('');
     const [matches, setMatches] = useState([]);
     const [result, setResult] = useState([]);
+    let searchItems = ["розы", "хризантемы", "композиции", "монобукет", "лилии"];
+
+    function upResult(value) {
+        const searchOptions = allItems.flatMap(bouquet => [bouquet.title, bouquet.description, ...bouquet.flowers]);
+        const _searchOptions = [...new Set(searchOptions)];
+        
+        const fuse = new Fuse(_searchOptions, { threshold: 0.3, keys: ['title'] });
+        const fuse_2 = new Fuse(allItems, { threshold: 0.3, keys: ['title', 'description', 'flowers'] });
+
+        const filteredMatches = fuse.search(value).map(result => result.item);
+        const filteredMatches_2 = fuse_2.search(value).map(result => result.item);
+        
+        setMatches(filteredMatches);
+        setResult(filteredMatches_2)
+
+    }
 
     return (
         <>
-            <Header inputValue={inputValue} setInputValue={setInputValue} matches={matches} setMatches={setMatches} result={result} setResult={setResult}/>
+            <Header inputValue={inputValue} setInputValue={setInputValue} matches={matches} setMatches={setMatches} result={result} setResult={setResult} upResult={upResult}/>
         
             {inputValue.length === 0 ? (
                 <>
-                <LastSearch />
+                <LastSearch searchItems={searchItems} setInputValue={setInputValue} upResult={upResult}/>
                 <Popular />
                 </>
             ) : (
