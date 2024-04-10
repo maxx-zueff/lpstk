@@ -114,18 +114,34 @@
 			  &::after {
 				content: '';
 				position: absolute;
-				width: 10px; /* Adjust based on your image size */
-				height: 10px; /* Adjust based on your image size */
-				background-image: url('/next.svg');
+				width: 20px; /* Adjust based on your image size */
+				height: 20px; /* Adjust based on your image size */
+				background-image: url('/toilet.png');
 				background-repeat: no-repeat;
 				background-position: center;
 				background-size: cover; /* Adjust based on your preference */
 				right: 10px; /* Adjust based on your layout */
 				top: 50%; /* Adjust to align vertically */
-				transform: translateY(-50%) rotate(90deg); /* Rotate the image */
+				transform: translateY(-50%) /* Rotate the image */
 			  }
 
-		}		
+		}
+		
+		.select_container_a {
+			position: relative;
+			height: 40px;
+			border-radius: 8px;
+			background: #f2f4f5;
+			width: 100%;
+			border: none;
+			color: #c1c7cc;
+			padding: 0 15px;
+			appearance: none;
+			display: flex;
+			align-items: center;
+			padding-left: 0;
+			font-size: .75rem;
+		}
 
 		.img_input {
 			position: relative;
@@ -181,15 +197,16 @@
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Добавляем тень для визуального выделения */
 	outline: none;
 
+	
 	h1 {
 		font-size: .75rem;
 		font-weight: 600;
 	}
-
+	
 	.btn {
 		margin-top: 20px;
 		border-radius: 8px;
-		background: #59adff;
+		background: #44515e;
 		height: 50px;
 		width: 100%;
 		color: #fff;
@@ -198,5 +215,9 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		
+		&:last-child {
+			background: #ff59b5;
+		}
 	}
   }

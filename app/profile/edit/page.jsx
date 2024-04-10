@@ -7,6 +7,9 @@ import Link from 'next/link'
 import IMask from 'imask';
 import { useState, useEffect } from 'react';
 import Modal from 'react-modal';
+import { DatePicker, ConfigProvider } from 'antd';
+import ru from 'antd/locale/ru_RU';
+// import 'react-day-picker/dist/style.css';
 
 export function Header() {
 	return (
@@ -76,6 +79,8 @@ export function Form() {
 		);
 	  };
 
+	const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
+	const [selectedDate, setSelectedDate] = useState(null);
 	const [isGenderModalOpen, setIsGenderModalOpen] = useState(false);
 	const [gender, setGender] = useState('');
 
@@ -101,10 +106,15 @@ export function Form() {
 			<div className={styles.form_row}>
 				<div className={styles.form_col}>
 					<div className={styles.form_title}>Дата рождения</div>
-					<div className={styles.img_input}>
-						<input id="date" type="text" placeholder="День/Месяц"/>
-						<Image  src="/calendar.png" alt="Календарь" width={20} height={20} />
-					</div>
+					<ConfigProvider locale={ru}>
+                            <DatePicker className={styles.select_container_a} locale={ru} placeholder="Дата рождения" onChange={(date) => {
+								setSelectedDate(date);
+								setIsDatePickerOpen(false);
+							}}
+
+                            />
+					</ConfigProvider>		
+						{/* <Image  src="/calendar.png" alt="Календарь" width={20} height={20} /> */}
 				</div>	
 				<div className={styles.form_col}>
 					<div className={styles.form_title}>Пол</div>
@@ -133,7 +143,6 @@ export default function Page() {
 				Внести изменения
 			</div>
 		</div>
-		{/* <div className={styles.start_container}>Первая покупка <span className={styles.start_date}>24/02/2018</span></div> */}
     </div>
   )
 }
