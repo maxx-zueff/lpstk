@@ -1,0 +1,86 @@
+@mixin fixed($top: 0, $z-index: 100) {
+    position: fixed;
+    top: $top;
+    left: 0;
+    right: 0;
+    z-index: $z-index;
+}
+
+@mixin absolute($top: 0, $left: 0) {
+    position: absolute;
+    top: $top;
+    left: $left;
+}
+
+@mixin flexbox($justify: center, $align: center, $direction: row, $wrap: wrap) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+    flex-direction: $direction;
+    flex-wrap: $wrap;
+}
+
+@mixin text-header($color: $primary, $font-size: $font-size-medium, $font-weight: $font-weight-bold, $text-align: left) {
+    color: $color;
+    font-size: $font-size;
+    font-weight: $font-weight;
+    text-align: $text-align;
+}
+
+@mixin text-accent($color: $accent, $font-weight: $font-weight-bold) {
+    color: $color;
+    font-weight: $font-weight;
+}
+
+@mixin image() {
+    object-fit: contain;
+    width: 100% !important;
+    position: relative !important;
+    height: unset !important;
+}
+
+
+
+
+
+
+
+@mixin button-style($bg-color: #59adff, $text-color: #fff) {
+    background: $bg-color;
+    color: $text-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    border-radius: 8px;
+    height: 50px;
+    width: 100%;
+    font-size: 1rem;
+}
+
+
+
+@mixin container() {
+    margin: 0 -30px;
+    width: 100%;
+    // .footer_container, .nav_container, .layout_container, .header_container.
+}
+
+@mixin input-style {
+    height: 40px;
+    border-radius: 8px;
+    background: #f2f4f5;
+    width: 100%;
+    border: none;
+    color: #c1c7cc;
+    padding: 0 15px;
+  
+    &:focus {
+      outline: none;
+      color: #000;
+    }
+  
+    &::placeholder {
+      color: #c1c7cc;
+    }
+  }

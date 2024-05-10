@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import styles from './page.module.scss'
 import { manrope } from '../../fonts'
+import { Header } from '@/app/_components/header';
 
 export function Notify() {
 	return (
@@ -126,6 +127,7 @@ export function Options() {
 export default function Page() {
 	return (
 		<>
+            <Header title={"Оформление заказа"}/>
 			<Notify />
 			<Options />
 		</>

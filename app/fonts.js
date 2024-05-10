@@ -3,12 +3,12 @@ import { Manrope, Raleway } from 'next/font/google'
  
 export const raleway = Raleway({
   subsets: ['cyrillic'],
-  weight: ['300','600','800'],
+  weight: ['300', '500', '600','800'],
   display: 'swap'
 })
 
 export const manrope = Manrope({
   subsets: ['cyrillic'],
-  weight: ['700', '300'],
+  weight: ['700', '600', '300'],
   display: 'swap'
 })

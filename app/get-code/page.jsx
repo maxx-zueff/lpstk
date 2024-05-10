@@ -1,24 +1,9 @@
 import Image from 'next/image'
 import styles from './page.module.scss'
 import { manrope } from './../fonts'
+import { Header } from '@/app/_components/header';
 
 let phone = "+7 999 000 00 00"
-
-export function Header() {
-	return (
-		<div className={styles.header_container}>
-			<Image
-				src="/back.svg"
-				width={30}
-				height={30}
-				alt="Back"
-			/>
-			<p className={styles.header_title}>
-				Авторизация
-			</p>
-		</div>
-	)
-}
 
 export function Main() {
 	return (
@@ -41,7 +26,7 @@ export function Main() {
 export default function Page() {
     return (
       <>
-      <Header />
+      <Header title={"Авторизация"}/>
       <Main />
       </>
     )

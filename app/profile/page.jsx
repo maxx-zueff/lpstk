@@ -2,26 +2,9 @@ import Image from 'next/image'
 import styles from './page.module.scss'
 import { manrope } from '../fonts'
 import Link from 'next/link'
+import { Header } from '@/app/_components/header';
 
 let orders = [14551, 14542];
-
-export function Header() {
-	return (
-		<div className={styles.header_container}>
-			<Link href="/">
-				<Image
-					src="/back.svg"
-					width={30}
-					height={30}
-					alt="Back"
-				/>
-			</Link>
-			<p className={styles.header_title}>
-				Личный кабинет
-			</p>
-		</div>
-	)
-}
 
 export function Profile() {
 	return (
@@ -129,7 +112,7 @@ export default function Page() {
   return (
     <div className={styles.page_container}>
 	    <div>
-		    <Header />
+			<Header title={"Личный кабинет"}/>
 		    <Profile />
 		    <Orders />
 			</div>

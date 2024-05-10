@@ -1,54 +1,10 @@
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import styles from './page.module.scss'
 import { manrope } from './fonts'
-import { Slider } from './components/slider'
-import { Products } from './components/products'
+import { Slider } from './_components/slider'
+import { Products } from './_components/products'
 import Link from 'next/link'
-
-const contentItems = [
-  [
-    {
-      image: "/offer_1.png",
-      description: "Описание предложения 1.1",
-    },
-    {
-      image: "/offer_1.png",
-      description: "Описание предложения 1.2",
-    },
-    {
-      image: "/offer_1.png",
-      description: "Описание предложения 1.3",
-    }
-  ],
-  [
-    {
-      image: "/offer_1.png",
-      description: "Описание предложения 2.1",
-    },
-    {
-      image: "/offer_1.png",
-      description: "Описание предложения 2.2",
-    },
-    {
-      image: "/offer_1.png",
-      description: "Описание предложения 2.3",
-    },
-    {
-      image: "/offer_1.png",
-      description: "Описание предложения 2.4",
-    }
-  ],
-  [
-    {
-      image: "/offer_1.png",
-      description: "Описание предложения 3.1",
-    },
-    {
-      image: "/offer_1.png",
-      description: "Описание предложения 3.2",
-    }
-  ]     
-]
+import {contentItems} from '@/app/_data'
 
 export function Logo() {
   return (
@@ -62,22 +18,6 @@ export function Logo() {
     </div>
   )
 }
-
-export function PickUp() {
-  return (
-    <div className={styles.pickup_container}>
-      <div>
-        <p className={styles.pickup_description}>Доставка по адресу</p>
-        <p className={styles.pickup_point}>г. Москва, ул. Пушкина, д. 1</p>
-      </div>
-      <div className={styles.pickup_change}>
-        <div>Изменить</div> 
-      </div>
-    </div>
-  )
-}
-
-
 
 export function Footer() {
   return (

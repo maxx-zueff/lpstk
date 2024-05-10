@@ -2,6 +2,7 @@ import Image from 'next/image'
 import styles from '../page.module.scss'
 import { manrope } from '../../fonts'
 import classNames from "classnames";
+import { Header } from '@/app/_components/header';
 
 export function OrderItem({ src, alt, title, type, price, oldPrice, quantity }) {
   const itemPrice = oldPrice ? (
@@ -179,6 +180,7 @@ export default function Page() {
 
   return (
     <>
+			<Header title={"Оформление заказа"}/>
 			<Order />
 			<AdditionalProducts />
 			<Total />

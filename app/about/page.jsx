@@ -1,22 +1,7 @@
 import Image from 'next/image'
 import styles from './page.module.scss'
 import { manrope } from '../fonts'
-
-export function Header() {
-	return (
-		<div className={styles.header_container}>
-			<Image
-				src="/back.svg"
-				width={30}
-				height={30}
-				alt="Back"
-			/>
-			<p className={styles.header_title}>
-				О Нас
-			</p>
-		</div>
-	)
-}
+import { Header } from '@/app/_components/header';
 
 function Description()  {
     return (
@@ -33,7 +18,7 @@ function Description()  {
 export default function Page() {
     return (
       <>
-      <Header />
+      <Header title={"О Нас"}/>
       <Description />
       </>
     )

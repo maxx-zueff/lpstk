@@ -1,22 +1,7 @@
 import Image from 'next/image'
 import styles from './page.module.scss'
 import { manrope } from '../../fonts'
-
-export function Header() {
-	return (
-		<div className={styles.header_container}>
-			<Image
-				src="/back.svg"
-				width={30}
-				height={30}
-				alt="Back"
-			/>
-			<p className={styles.header_title}>
-				Заказ 000001
-			</p>
-		</div>
-	)
-}
+import { Header } from '@/app/_components/header';
 
 export function Progress() {
 	return (
@@ -245,7 +230,7 @@ export function Help() {
 export default function Page() {
   return (
 	    <div>
-		    <Header />
+		    <Header title={"Заказ 000031"}/>
 		    <Progress />
 		    <Photo />
 		    <Order />

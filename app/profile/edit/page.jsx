@@ -9,25 +9,8 @@ import { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import { DatePicker, ConfigProvider } from 'antd';
 import ru from 'antd/locale/ru_RU';
+import { Header } from '@/app/_components/header';
 // import 'react-day-picker/dist/style.css';
-
-export function Header() {
-	return (
-		<div className={styles.header_container}>
-			<Link href="/">
-			<Image
-				src="/back.svg"
-				width={30}
-				height={30}
-				alt="Back"
-			/>
-			</Link>
-			<p className={styles.header_title}>
-				Редактировать профиль
-			</p>
-		</div>
-	)
-}
 
 export function Profile() {
 	return (
@@ -136,7 +119,7 @@ export default function Page() {
   return (
     <div className={styles.page_container}>
 	    <div>
-		    <Header />
+			<Header title={"Редактировать профиль"}/>
 		    <Profile />
 		    <Form />
 			<div className={styles.confirm}>

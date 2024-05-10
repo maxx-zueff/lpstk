@@ -1,22 +1,7 @@
 import Image from 'next/image'
 import styles from './page.module.scss'
 import { manrope } from '../fonts'
-
-export function Header() {
-	return (
-		<div className={styles.header_container}>
-			<Image
-				src="/back.svg"
-				width={30}
-				height={30}
-				alt="Back"
-			/>
-			<p className={styles.header_title}>
-				Авторский букет
-			</p>
-		</div>
-	)
-}
+import { Header } from '@/app/_components/header';
 
 export function Photos() {
   const images = [
@@ -97,9 +82,12 @@ export function Button() {
 }
 
 export default function Item() {
+
+  const type = "Авторский букет";
+
   return (
     <>
-    <Header />
+    <Header title={type}/>
     <Photos />
     <Title />
     <Button />

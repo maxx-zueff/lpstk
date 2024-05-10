@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import styles from './page.module.scss'
 import { manrope } from './../../fonts'
+import { Header } from '@/app/_components/header';
 
 export function Price() {
 	return(
@@ -66,6 +67,7 @@ export function Confirm() {
 export default function Page() {
 	return (
 		<div className={styles.page_container}>
+			<Header title={"Оформление заказа"}/>
 			<div>
 				<Price />
 				<Total />
