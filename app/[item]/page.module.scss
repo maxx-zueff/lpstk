@@ -1,133 +1,81 @@
-.header_container {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 15px 30px;
-	position: fixed;
-	top: 0;
-	width: 100%;
-	margin: 0 -30px;
-	z-index: 100;
-	background: #fff;
-
-
-	.header_title {
-		font-size: 1rem;
-		font-weight: 600;
-		width: 100%;
-		text-align: center;
-	}
+.wrapper {
+  padding-top: $padding-large * 2;
 }
 
 .photos_selected {
-
-	.image {
-		object-fit: contain;
-	    width: 100% !important;
-	    position: relative !important;
-	    height: unset !important;
-
-		border-radius: 30px;
-		background: linear-gradient(225deg, #f2f4f5 0%, #cfe7ff 100%);
-	}
-}
-
-.photos_container {
-	padding-top: 60px;
+  @include image;
+  border-radius: $radius-large;
+  background: $background-gradient-blue;
 }
 
 .photos_list {
-	display: flex;
-	margin-left: -15px;
-	padding-top: 30px;
-	flex-wrap: nowrap;
+  @include flexbox($wrap: nowrap);
+  gap: $padding-medium;
+  padding-top: $padding-large;
 
-	.photos_item {
-		margin-left: 15px;
-		flex: 100%;
-	}
+  .photos_item {
+    flex: 100%;
+  }
 
+  .image {
+    background: $background-gradient-green;
+    border-radius: $radius-medium;
+    @include image;
+  }
 
-	.image {
-		object-fit: contain;
-	    width: 100% !important;
-	    position: relative !important;
-	    height: unset !important;
-
-		border-radius: 10px;
-		background: linear-gradient(225deg, #f2f4f5 0%, #e9ffe4 100%);
-	}
-
-	.active {
-		background: linear-gradient(225deg, #f2f4f5 0%, #cfe7ff 100%);
-	}
+  .active {
+    background: $background-gradient-blue;
+  }
 }
 
-.description_container {
-	padding-top: 30px;
-	padding-bottom: 90px;
-	display: flex;
-	justify-content: space-between;
-	flex-wrap: wrap;
+.details {
+  @include flexbox($justify: space-between);
+  padding-top: $padding-large;
+  padding-bottom: 90px;
 
-	h1 {
-		font-weight: 600;
-		font-size: 24px;
-	}
+ &_title {
+    @include text-header($font-size: $font-size-large);
+  }
 
-	.feedback {
-		display: flex;
-		align-items: center;
-		margin-top: 8px;
-		margin-left: -8px;
-	}
+ &_rating {
+    @include flexbox($justify: space-between);
+    margin-top: 8px;
+    gap: 8px;
+  }
 
-	.price {
-		font-size: 36px;
-		font-weight: 700;
-	}
+   &_separator {
+    width: 5px;
+    height: 5px;
+    border-radius: $radius-full;
+    background: $secondary;
+  }
 
-	.point {
-		width: 5px;
-		height: 5px;
-		border-radius: 100%;
-		background: #989ba5;
-	}
+  &_price {
+    @include text-header($font-size: $font-size-extra);
+  }
 
-	.feedback_item {
-		margin-left: 8px;
-	}
+  &_description {
+    padding-top: $padding-large;
+    color: $secondary;
+  }
 
-	.subdescription {
-		flex: 100%;
-		padding-top: 30px;
-		color: #989BA5;
-	}
-
-	.size {
-		padding-top: 15px;
-		display: flex;
-		flex: 100%;
-		margin-left: -25px;
-		font-weight: 600;
-
-		.size_item {
-			padding-left: 25px;
-		}
-	}
+  &_dimensions {
+    @include flexbox($justify: flex-grow);
+    gap: $padding-large;
+    padding-top: $padding-medium;
+    font-weight: $font-weight-bold;
+  }
 }
 
 .btn_container {
-	position: fixed;
-	bottom: 0;
-	display: flex;
-	background: #59ADFF;
-	width: 100%;
-	margin: 0 -30px;
-	justify-content: center;
-	padding: 20px 30px;
-	border-radius: 20px 20px 0 0;
-	color: #fff;
-	font-size: 1rem;
-	font-weight: 600;
+  @include bottom-nav;
+  justify-content: center;
+
+  .btn_img {
+    @include flexbox;
+
+    p {
+      padding-left: $padding-large;
+    }
+  }
 }

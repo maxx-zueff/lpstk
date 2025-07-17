@@ -1,0 +1,10 @@
+.wrapper {
+  padding-top: $nav-height-mobile * 2;
+}
+
+.header_container {
+  @include fixed;
+  background: $background-white;
+}
+
+

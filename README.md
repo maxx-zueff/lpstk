@@ -1,34 +1,87 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# Задачи проекта
 
-First, run the development server:
+## Изменить дизайн
+- [x] Страница ЧАТ
+- [x] Страница О НАС
+- [x] Кнопка чат в меню
+- [x] Счётчик для товара
+- [x] Окно подтверждения удаления
+- [x] Выделение активного способа вручения
+- [x] Модуль времени
+- [x] Модуль пола
+- [x] Кнопка изменить оценку
+- [x] Подсказка с доплатой
+- [x] Ввод отзыва
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## Товар
+- [x] Кнопка на главную
+- [x] Переключение фото
+- [x] Кнопка на отзывы
+- [x] Кнопка добавить в корзину меняется на Перейти в корзину
+- [x] Статус загрузки
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Корзина
+- [x] Кнопка на главную
+- [x] Переключение этапа оформления через бар
+- [x] Счётчик товара
+- [x] Удаление после свайпа
+- [x] Окно подтверждения удаления
+- [x] Прокрутка допов
+- [x] Добавление допа к заказу
+- [x] Появление галочки/креста после применения промокода
+- [x] Добавление скидки после применения промокода
+- [x] Изменение скидки после применения бонусов
+- [x] Переключение этапа оформления через кнопку
+- [x] Статус загрузки
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Корзина/Доставка_1
+- [x] Кнопки с вариантами вручения
+- [x] Выделить активную кнопку
+- [x] Переключение этапа оформления через бар
+- [x] Статус загрузки
+- [ ] Переключение на детали вручения
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Корзина/Доставка_Детали
+- [x] Переключение этапа оформления через бар
+- [x] Отображение варианта вручения
+- [ ] Отображение полей в зависимости от варианта вручения
+- [x] Паттерны для полей
+- [x] Модули для времени
+- [x] Автозаполнение адреса
+- [ ] Подскаска с ценой доставки
+- [x] Подсказка с временнем доставки
+- [x] Переключение этапа оформления через кнопку
+- [x] Статус загрузки
 
-## Learn More
+## Корзина/Оплата
+- [x] Переключение этапа оформления через бар
+- [x] Изменение скидки после применения бонусов
+- [x] Кнопка для перехода в банк
 
-To learn more about Next.js, take a look at the following resources:
+## Заказ
+- [x] Общий heaader для профиля и заказа
+- [x] Обновление статуса заказа
+- [x] Оценка
+- [x] Подсказка ссылка для доплаты
+- [x] Паттерны для отображения блоков
+- [x] Описание заказа без оплаты и без адреса
+- [x] Ссылка на изменение вручения
+- [x] Установить звёздочки
+- [x] Кнопка изменить звёздочки
+- [x] Поле для ввода отзыва (с ограничением символов)
+- [x] Кнопка подтверждения отзыва
+- [x] Ссылка на чат по заказу
+- [x] Панель ожидания сборки
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Чат
+- [x] Реализовать функционал чата
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Авторизация
+- [ ] Паттерн для полей
+- [ ] Таймер для нового кода
+- [ ] Ссылки на код
+- [ ] Ссылка на телефон
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Детали вручения
+- [ ] Настроить переход в способ вручения

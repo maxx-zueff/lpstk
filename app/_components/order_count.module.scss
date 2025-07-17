@@ -1,0 +1,15 @@
+.order_count {
+    @include flexbox($wrap: nowrap, $justify: space-between);
+    margin-left: $padding-medium;
+    font-family: $font-manrope;
+    width:$quantity-width-mobile;
+
+    .order_sign {
+      @include text-accent;
+      font-size: $font-size-medium;
+    }
+
+    .order_count_number {
+      padding: 0 $padding-large;
+    }
+  }

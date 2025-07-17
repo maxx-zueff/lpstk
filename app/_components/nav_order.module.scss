@@ -1,0 +1,26 @@
+.nav_container {
+    @include flexbox($justify: space-between);
+    height: $nav-height-mobile;
+    padding: $padding-small $padding-large * 2;
+    background: $accent;
+    color: #fff;
+  
+    .nav_item {
+      @include flexbox;
+    }
+  
+    .active {
+      border-radius: $radius-large;
+      background: $primary;
+      padding: $padding-small $padding-medium;
+  
+      img {
+        width: $item-height-mobile-mini;
+        height: $item-height-mobile-mini;
+      }
+  
+      .description {
+        padding-left: $padding-medium;
+      }
+    }
+  }

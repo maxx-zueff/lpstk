@@ -4,8 +4,7 @@ import Image from "next/image";
 import styles from "./products.module.scss";
 import { manrope } from "../fonts";
 import { useState, useEffect, useRef } from "react";
-import { compileString } from "sass";
-import Link from 'next/link'
+import { Link } from "react-transition-progress/next";
 
 function Menu({ activeItemIndex, setActiveItemIndex, isFixed, setIsFixed, products, selectedItemsHeaderRef}) {
   const [startPosition, setStartPosition] = useState(0);
@@ -28,7 +27,7 @@ function Menu({ activeItemIndex, setActiveItemIndex, isFixed, setIsFixed, produc
     const deltaRight = menuWrapperRef.current.offsetWidth - menuContainer.current.scrollWidth;
 
     let newDelta = event.touches[0].clientX - menuWrapperRef.current.offsetLeft - startPosition;
-    let newLeft = currentTranslate + newDelta;
+    let newLeft = currentTranslate + (newDelta*2);
 
     if (newLeft > 0) {
       newLeft = 0;

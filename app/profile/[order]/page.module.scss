@@ -1,0 +1,262 @@
+.progress {
+  position: relative;
+  padding: $padding-large 0;
+  @include flexbox($wrap: nowrap, $justify: space-between);
+
+  &_bar {
+    position: absolute;
+    height: $bar-height-mobile;
+    width: 100%;
+    z-index: -1;
+    background: $secondary-light;
+
+    &_indicator {
+      position: inherit;
+      height: inherit;
+      background: $accent;
+    }
+  }
+
+  &_point {
+    @include flexbox;
+    height: $bar-point-mobile;
+    width: $bar-point-mobile;
+    color: white;
+    background: white;
+    border-radius: $radius-full;
+    border: $bar-height-mobile $secondary-light solid;
+    color: $secondary;
+    z-index: 1;
+
+    &_label {
+      color: $secondary;
+      position: absolute;
+      bottom: 0;
+    }
+
+    &_active {
+      color: white;
+      background: $accent;
+    }
+
+    &_complete {
+      background: $accent;
+      border: none;
+    }
+  }
+}
+
+.photo {
+  padding-top: $padding-large;
+  position: relative;
+
+  &_placeholder {
+    background: $background-grey;
+    color: $primary;
+    padding: $padding-large;
+    border-radius: $radius-medium;
+
+  }
+
+  &_title {
+    @include text-header;
+    padding-bottom: $padding-medium;
+  }
+
+  img {
+    position: relative !important;
+    border-radius: $radius-medium;
+  }
+
+  &_rate {
+    position: absolute;
+    bottom: 10%;
+    width: 100%;
+    @include flexbox($justify: space-around);
+
+    &_active {
+      background: $accent !important;
+    }
+
+    img {
+      cursor: pointer;
+      padding: $padding-small;
+      border-radius: $radius-full;
+      background: $secondary-light;
+      -webkit-tap-highlight-color: transparent;
+      -webkit-touch-callout: none;
+      user-select: none;
+    }
+  }
+}
+
+.order {
+  padding-top: $padding-large;
+
+  &_header {
+    @include flexbox($justify: space-between);
+    padding-bottom: $padding-medium;
+
+    &_title {
+      @include text-header;
+    }
+
+    &_repeat {
+      cursor: pointer;
+      @include flexbox;
+      color: $accent;
+      -webkit-tap-highlight-color: transparent;
+      -webkit-touch-callout: none;
+      user-select: none;
+
+      img {
+        margin-right: $padding-small;
+      }
+    }
+  }
+
+  &_list {
+    color: white;
+    padding: $padding-large;
+    border-radius: $radius-medium;
+    background: $accent;
+  }
+
+  &_item {
+    padding-bottom: $padding-medium;
+
+    &_main {
+      @include flexbox($justify: start);
+      padding-bottom: $padding-xsmall;
+    }
+
+    &_title {
+      font-weight: $font-weight-bold;
+    }
+
+    &_point {
+      @include point($background: white);
+    }
+  }
+
+  &_line {
+    height: 2px;
+    background: white;
+  }
+
+  &_total {
+    padding-top: $padding-medium;
+    font-weight: $font-weight-bold;
+    @include flexbox($justify: space-between);
+  }
+}
+
+.detail {
+  padding-top: $padding-large;
+
+  &_header {
+    @include flexbox($justify: space-between);
+    padding-bottom: $padding-medium;
+
+    &_title {
+      @include text-header;
+    }
+
+    &_edit {
+      color: $accent;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      -webkit-touch-callout: none;
+      user-select: none;
+    }
+  }
+
+  &_list {
+    padding: $padding-medium $padding-large;
+    border-radius: $radius-medium;
+    background: $background-grey;
+  }
+
+  &_item {
+    padding: $padding-medium 0;
+
+    &_main {
+      @include flexbox($justify: start);
+      font-weight: $font-weight-bold;
+    }
+
+    &_point {
+      @include point;
+    }
+
+    &_title {
+      color: $secondary;
+      padding-bottom: $padding-xsmall;
+    }
+  }
+
+  &_line {
+    height: 2px;
+    background: white;
+  }
+}
+
+.feedback {
+  padding-top: $padding-large;
+
+  &_title {
+    @include text-header;
+    padding-bottom: $padding-medium;
+  }
+
+  &_rate {
+    @include flexbox($justify: space-between);
+  }
+
+  &_rate_set {
+    padding: $padding-small;
+    @include flexbox($justify: center);
+  }
+  
+  &_star {
+    margin-right: $padding-medium;
+  }
+
+  &_edit {
+    color: $accent;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    user-select: none;
+  }
+
+  &_comment {
+    @include input-style($height: 80px);
+    margin-top: $padding-medium;
+    padding-top: $padding-medium;
+  }
+
+  &_submit {
+    margin-top: $padding-medium;
+    padding: $padding-medium;
+    border-radius: $radius-medium;
+    background: $background-grey;
+    word-wrap: break-word;
+  }
+}
+
+.help {
+  @include flexbox;
+  padding: $padding-large 0;
+  color: $accent;
+
+  &_icon {
+    margin-right: $padding-medium;
+  }
+}
+
+.confirm {
+  @include bottom-nav;
+  cursor: pointer;
+  justify-content: center;
+}

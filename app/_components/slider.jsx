@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import styles from './slider.module.scss'
-import { manrope } from "../fonts";
 import { useState, useRef } from "react";
 
 export function Slider({ contentItems }) {
@@ -62,7 +61,7 @@ export function Slider({ contentItems }) {
       </ul>
 
       {contentItems.map((subArray, index) => (
-        <>
+        <div key={index}>
           {subArray.map(
             (item, subIndex) =>
               index === activeState.index &&
@@ -71,12 +70,13 @@ export function Slider({ contentItems }) {
                   onTouchStart={handleTouchStart}
                   onTouchEnd={handleTouchEnd}
                   onTouchMove={handleTouchOver}
+                  key={item.id}
                 >
                   <div className={styles.slider_image_wrapper}>
                     <Image
                       src={item.image}
                       alt={item.description}
-                      layout="fill"
+                      fill
                       className={styles.slider_image}
                     />
                   </div>
@@ -98,7 +98,7 @@ export function Slider({ contentItems }) {
               ))}
             </ul>
           )}
-        </>
+        </div>
       ))}
     </div>
   );

@@ -33,54 +33,72 @@
 }
 
 @mixin image() {
-    object-fit: contain;
+    object-fit: cover;
     width: 100% !important;
     position: relative !important;
-    height: unset !important;
+    height: 100% !important;
 }
 
-
-
-
-
-
-
-@mixin button-style($bg-color: #59adff, $text-color: #fff) {
+@mixin bottom-nav($bg-color: #59adff, $text-color: #fff,  $font-size: $font-size-medium) {
+    @include flexbox($justify: space-between);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0 $padding-large;
     background: $bg-color;
     color: $text-color;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: 600;
-    border-radius: 8px;
-    height: 50px;
-    width: 100%;
-    font-size: 1rem;
+    font-weight: $font-weight-bold;
+    border-radius: $radius-large $radius-large 0 0;
+    height: $nav-height-mobile;
+    font-size: $font-size;
 }
 
-
-
-@mixin container() {
-    margin: 0 -30px;
-    width: 100%;
-    // .footer_container, .nav_container, .layout_container, .header_container.
-}
-
-@mixin input-style {
-    height: 40px;
-    border-radius: 8px;
-    background: #f2f4f5;
+@mixin input-style($height: $input-height-mobile) {
+    height: $height;
+    border-radius: $radius-medium;
+    background: $background-grey;
     width: 100%;
     border: none;
-    color: #c1c7cc;
-    padding: 0 15px;
-  
+    color: $primary;
+    padding: 0 $padding-medium;
+    font-size: 0.75rem !important;
+    font-family: $font-manrope;
+    transition: all .1s ease; 
+
+    @supports (-webkit-touch-callout: none) {
+        font-size: 1rem !important;
+    }
+
     &:focus {
       outline: none;
-      color: #000;
+      color: $primary;
+      box-shadow: 0 0 0 2px $accent-shadow;
+      border: 1px solid $accent;
     }
   
     &::placeholder {
-      color: #c1c7cc;
+      color: $secondary
     }
   }
+
+@mixin center-container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin notify($background: $background-gradient-green) {
+    border-radius: $radius-medium;
+    background: $background;
+    padding: $padding-medium;
+}
+
+@mixin point($background: $secondary) {
+    border-radius: $radius-full;
+    background: $background;
+    width: $point-mobile;
+    height: $point-mobile;
+    margin: 0 $padding-small;
+}

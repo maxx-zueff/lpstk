@@ -1,16 +1,12 @@
-$primary: #1A3046;
-$secondary: #989BA5;
-$secondary-light: #C1C7CC;
-$accent: #59ADFF;
-$accent-red: #F2A0A3;
-$star: #F1EA32;
+$primary: #1a3046;
+$secondary: #989ba5;
+$secondary-light: #F2F4F5;
+$accent: #59adff;
+$accent-shadow: rgba(89, 172, 255, 0.2);
+$accent-red: #ff5959;
+$star: #f1ea32;
 
-$background-grey: #F6F6F6;
-$background-red: #F5F2F2;
-$background-white: #FFF;
-$background-gradient-blue: linear-gradient(225deg, #f2f4f5 0%, #cfe7ff 100%);
-$background-gradient-green: linear-gradient(225deg, #f2f4f5 0%, #e9ffe4 100%);
-
+$font-weight-light: 300;
 $font-weight-regular: 400;
 $font-weight-medium: 500;
 $font-weight-bold: 600;
@@ -20,14 +16,36 @@ $font-size-small: 0.9rem;
 $font-size-medium: 1rem;
 $font-size-large: 1.5rem;
 $font-size-extra: 2rem;
+$font-size-max: 3rem;
 
+$font-manrope: var(--font-manrope);
+$font-raleway: var(--font-raleway);
+
+$background-grey: #f6f6f6;
+$background-red: #f5f2f2;
+$background-white: #fff;
+$background-gradient-blue: linear-gradient(225deg, #f2f4f5 0%, #ddedfc 100%);
+$background-gradient-green: linear-gradient(225deg, #f2f4f5 0%, #e9ffe4 100%);
+$background-gradient-red: linear-gradient(225deg, #ffdbdb 0%, #ffafaf 100%);
+
+$padding-xsmall: 5px;
 $padding-small: 10px;
 $padding-medium: 15px;
 $padding-large: 30px;
 
 $radius-small: 5px;
 $radius-medium: 8px;
-$radius-large: 30px;
+$radius-large: 20px;
+$radius-extra: 30px;
 $radius-full: 100%;
 
-$menu-height-mobile: 110px;
+$menu-height-mobile: 115px;
+$nav-height-mobile: 60px;
+$item-height-mobile: 30px;
+$item-height-mobile-mini: 20px;
+$input-height-mobile: 40px;
+$quantity-width-mobile: 80px;
+
+$bar-height-mobile: 3px;
+$bar-point-mobile: 25px;
+$point-mobile: 5px;

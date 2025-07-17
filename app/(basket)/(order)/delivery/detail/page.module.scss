@@ -1,0 +1,151 @@
+.wrapper {
+  padding-bottom: 80px;
+}
+
+.free {
+  @include text-accent;
+}
+
+.option_container {
+  @include flexbox($wrap: nowrap, $justify: space-between, $align: top);
+  padding: $padding-large;
+  background: $background-gradient-blue;
+  margin: {
+    right: -$padding-large;
+    left: -$padding-large;
+  }
+
+  .option_item {
+    width: 100%;
+    padding-left: $padding-medium;
+
+    .option_title {
+      @include text-header;
+    }
+
+    .option_description {
+      color: $secondary;
+      padding-top: $padding-small;
+    }
+  }
+}
+
+.form {
+
+  &_container {
+    padding-top: $padding-large;;
+  }
+
+  &_row {
+    display: flex;
+    margin-right: -$padding-medium * 1.5;
+    
+    &:not(:first-child) {
+      padding-top: $padding-medium;
+    }
+  }
+
+  &_col {
+    flex: 1;
+    margin-right: $padding-medium * 1.5;
+  }
+
+  &_input {
+    @include input-style;
+
+    &_comment {
+      @include input-style;
+      padding-top: $padding-medium;
+      height: 80px;
+    }
+
+    & input {
+      @include input-style;
+      &:focus {
+        border: none;
+      }
+    }
+
+    &:focus-within {
+      border: solid 1px $accent;
+    }
+
+    &_invalid {
+      animation: borderAppear 0.1s ease-out forwards;
+    }
+  }
+
+  &_title {
+    padding-bottom: $padding-xsmall;
+
+    &_required {
+      color: $accent-red;
+    }
+  }
+}
+
+.suggestions_list {
+  list-style: none;
+  position: absolute;
+  left: 30px;
+  right: 30px;
+  border-radius: $radius-medium;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 0 $padding-medium;
+  background: #fff;
+  margin-top: $padding-small;
+
+  li {
+    padding: $padding-small 0;
+    cursor: pointer;
+  }
+}
+
+.notify_container {
+  padding-top: $padding-medium;
+
+  .notify {
+    margin-top: $padding-medium;
+    @include notify($background: $background-gradient-green);
+    animation: notifyAppear  .5s ease-in-out;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  .notify_warning {
+    @extend .notify;
+    @include notify($background: $background-gradient-red);
+  }
+
+}
+
+.confirm {
+  @include bottom-nav;
+  justify-content: center;
+  
+  &_disabled {
+    @include bottom-nav;
+    justify-content: center;
+    background-color: $secondary;
+    cursor: not-allowed;
+  }
+}
+
+@keyframes notifyAppear {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes borderAppear {
+  from {
+    border: 1px solid transparent;
+  }
+  to {
+    border: 1px solid $accent-red;
+  }
+}

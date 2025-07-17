@@ -1,16 +1,20 @@
-.header_container {
-	@include fixed;
+@mixin header {
 	@include flexbox($justify: space-between,  $wrap: nowrap);
-	padding: {
-		top: $padding-medium;
-		bottom:  $padding-medium;
-		left: $padding-large;
-		right: $padding-large;
-	}
+	padding: $padding-medium $padding-large;
 	background: $background-white;
+	height: $nav-height-mobile;
 
 	.header_title {
 		@include text-header($font-weight: $font-weight-medium, $text-align: center);
 		width: 100%;
 	}
+}
+
+.header_container {
+	@include fixed;
+	@include header;
+}
+
+.header_container_static {
+	@include header;
 }

@@ -1,0 +1,39 @@
+.container {
+    @include center-container;
+    width: 100%;
+    padding: 0 $padding-large;
+    text-align: center;
+
+
+    .image_container {
+        width: 100%;
+        background: linear-gradient(225deg, #f2f4f5 0%, #f9ecec 100%);
+        border-radius: $radius-extra;
+
+        .image {
+            @include image;
+        }
+    }
+
+    .confirm_header {
+        padding: 40px 0;
+        font-size: $font-size-large;
+        font-weight: $font-weight-light;
+        line-height: 2rem;
+
+        .confirm_item {
+            @include text-accent;
+        }
+    }
+
+    .confirm_text {
+        color: $secondary;
+        line-height: 1.2rem;
+    }
+
+}
+
+.confirm_button {
+    @include bottom-nav($bg-color: $accent-red);
+    justify-content: center;
+}

@@ -1,0 +1,50 @@
+.total_container {
+  padding-top: 30px;
+
+  .title {
+    @include text-header;
+  }
+
+  .total_table {
+    padding-top: $padding-medium;
+    padding-bottom: 90px;
+    color: $secondary;
+    width: 100%;
+
+    .row {
+      @include flexbox($justify: space-between);
+      padding-top: $padding-small;
+
+      &:first-child {
+        padding-top: 0;
+      }
+
+      &:last-of-type {
+        color: $primary;
+
+        .price {
+          @include text-accent;
+        }
+      }
+
+      .digit {
+        font-family: $font-manrope;
+      }
+
+      .discount {
+        @extend .digit;
+        @include text-accent;
+        padding-left: $padding-xsmall;
+      }
+
+      .price {
+        @extend .digit;
+        color: $primary;
+      }
+
+      .discount_price {
+        color: $accent-red;
+      }
+    }
+  }
+}

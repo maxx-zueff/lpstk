@@ -1,72 +1,61 @@
+.progressbar {
+  @include fixed($z-index: 1000);
+  height: 5px; 
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); 
+  background-color: $accent;
+}
+
 .logo {
-  display: flex;
-  justify-content: center;
-  padding: 30px 0 40px 0;
+  @include flexbox;
+  padding: $padding-large 0;
 }
 
 .footer_container {
-  background: #3F5367;
-  margin: 0 -30px;
-  padding: 30px;
-  padding-bottom: 80px;
+  background: $primary;
+  padding: $padding-large;
+  padding-bottom: $nav-height-mobile + $padding-large;
   color: #fff;
-
-  * {
-    margin-top: 20px;
+  margin: {
+    left: -$padding-large;
+    right: -$padding-large;
+  }
+  
+  *:not(:first-child) {
+    margin-top: $padding-medium;
   }
 
   .footer_tagline {
-    font-size: 24px;
-    font-weight: 800;
-    margin-top: 0px;
+    font-size: $font-size-large;
+    font-weight: $font-weight-bold;
   }
 
   .footer_phone {
-    font-size: 1rem;
+    font-size: $font-size-medium;
+    font-family: $font-manrope;
   }
 
   .footer_about {
-    color: #59ADFF;
-    font-weight: 600;
-    font-size: 0.8rem;
-    display: block;
+    @include text-accent;
   }
 }
 
 .nav_container {
-  position: fixed;
-  bottom: 0;
-  display: flex;
-  align-items: center;
-  height: 60px;
-  background: #59ADFF;
-  width: 100%;
-  margin: 0 -30px;
-  justify-content: space-between;
-  padding: 0 30px;
-  border-radius: 20px 20px 0 0;
-  color: #fff;
+  @include bottom-nav($font-size: $font-size-base);
 
-  .nav_item {
-    padding: 5px 10px 2px 10px;
-
-    .count {
-      padding-left: 10px;
-      // font-size: 1rem;
-    }
+  .nav_count {
+    padding-left: $padding-small;
+    font-family:  $font-manrope;
   }
 
   .active {
-    background: #1A3046;
-    border-radius: 20px;
-    padding: 10px 20px;
-    display: flex;
-    align-items: center;
+    background: $primary;
+    padding: $padding-small $padding-medium;
+    @include flexbox;
+    border-radius: $radius-large;
 
     img {
-      width: 20px;
-      height: 20px;
+      width: $item-height-mobile-mini;
+      height: $item-height-mobile-mini;
     }
-
   }
 }

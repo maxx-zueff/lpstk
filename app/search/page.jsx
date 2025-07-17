@@ -5,7 +5,7 @@ import styles from './page.module.scss'
 import { manrope } from '../fonts'
 import { useState } from 'react';
 import Fuse from 'fuse.js';
-import Link from 'next/link'
+import { Link } from "react-transition-progress/next";
 
 const popularItems = [
     {
@@ -202,8 +202,8 @@ function Popular() {
                 Популярные букеты
             </h1>
             {popularItems.map((item, index) => (
-                <Link href={`/${item.id}`}>
                 <div className={styles.popular_items} key={index}>
+                    <Link href={`/${item.id}`}>
                     <div className={styles.popular_item}>
                         <Image
                             src={item.imageSrc}
@@ -222,8 +222,8 @@ function Popular() {
                         </div>
                         
                     </div>
-                </div>
                 </Link>
+                </div>
             ))}
         </div>
     )
@@ -238,8 +238,8 @@ function SearchResult({result}) {
             Найдено <span className={manrope.className}>{result.length}</span> товаров
             </h1>
             {result.map((item, index) => (
-                <Link href={`/${item.id}`}>
                 <div className={styles.popular_items} key={index}>
+                    <Link href={`/${item.id}`}>
                     <div className={styles.popular_item}>
                         <Image
                             src={item.imageSrc}
@@ -258,8 +258,8 @@ function SearchResult({result}) {
                         </div>
                         
                     </div>
-                </div>
                 </Link>
+                </div>
             ))}
         </div>
     )

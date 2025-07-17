@@ -1,0 +1,41 @@
+.notify {
+  @include notify;
+  margin-top: $padding-large;
+}
+
+.free {
+  @include text-accent;
+}
+
+.options_container {
+  padding-top: $padding-large;
+
+  & .active {
+	background: $background-gradient-blue;
+  }
+
+  .option_container {
+    @include flexbox($wrap: nowrap, $justify: space-between, $align: top);
+    border-top: $background-grey solid 1px;
+    padding: $padding-large;
+    margin: {
+      right: -$padding-large;
+      left: -$padding-large;
+    }
+  }
+
+  .option_item {
+    @include flexbox($justify: space-between, $wrap: nowrap);
+    width: 100%;
+    padding-left: $padding-medium;
+
+    .option_title {
+      @include text-header;
+    }
+
+    .option_description {
+      color: $secondary;
+      padding-top: $padding-small;
+    }
+  }
+}

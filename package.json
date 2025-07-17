@@ -10,20 +10,26 @@
   },
   "dependencies": {
     "antd": "^5.16.1",
+    "axios": "^1.7.2",
     "classnames": "^2.3.2",
+    "dayjs": "^1.11.12",
     "eslint": "8.49.0",
     "eslint-config-next": "13.4.19",
+    "framer-motion": "^11.2.10",
     "fuse.js": "^7.0.0",
     "imask": "^7.5.0",
-    "next": "^13.5.6",
+    "next": "^14.2.4",
     "react": "18.2.0",
     "react-datepicker": "^6.6.0",
     "react-datetime": "^3.2.0",
     "react-day-picker": "^8.10.0",
     "react-dom": "18.2.0",
-    "react-modal": "^3.16.1"
+    "react-modal": "^3.16.1",
+    "react-transition-progress": "^0.0.4"
   },
   "devDependencies": {
+    "@types/node": "22.15.2",
+    "@types/react": "19.1.2",
     "sass": "^1.69.3"
   }
 }

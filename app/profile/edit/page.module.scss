@@ -1,223 +1,188 @@
-.page_container {
-	min-height: inherit;
-	display: flex;
-	justify-content: space-between;
-	flex-direction: column;
+.wrapper {
+  min-height: inherit;
+  padding-top: $padding-large * 2;
 }
 
-.header_container {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 15px 30px;
-	position: fixed;
-	top: 0;
-	width: 100%;
-	margin: 0 -30px;
-	z-index: 0;
-	background: #fff;
-
-
-	.header_title {
-		font-size: 1rem;
-		font-weight: 600;
-		width: 100%;
-		text-align: center;
-	}
+.page {
+  min-height: inherit;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
 }
 
-.profile_container {
+.profile {
+  @include flexbox($direction: column);
 
-	padding-top: 90px;
-	display: flex;
-	justify-content: center;
+  img {
+    border-radius: $radius-full;
+  }
 
-	.profile_avatar_container {
-
-		position: relative;
-		display: flex;
-		align-items: center;
-
-		.profile_avatar {
-			border-radius: 100%;
-		}
-
-		.profile_avatar_edit {
-			position: absolute;
-			right: 0px;
-			bottom: 0px;
-		}
-	}
-
-
-	h1 {
-		padding-top: 20px;
-		font-size: 24px;
-		font-weight: 600;
-	}
-
+  h1 {
+    @include text-header($font-size: $font-size-large);
+    padding-top: $padding-medium;
+  }
 }
 
 .form_container {
-	margin-top: -20px;
-	font-weight: 600;
-	margin-right: -15px;
-	padding-top: 60px;
+  // margin-top: -30px;
+  font-weight: 600;
+  margin-right: -15px;
+  padding-top: 15px;
 
-	.form_row {
-		padding-top: 20px;
-		display: flex;
-		width: 100%;
-		flex: 100%;
+  .form_row {
+    padding-top: 15px;
+    display: flex;
+    width: 100%;
+    flex: 100%;
 
-		.form_col {
-			flex: 1;
-			margin-right: 15px;
-		}
+    .form_col {
+      flex: 1;
+      margin-right: 15px;
+    }
 
-		input {
-			height: 40px;
-			border-radius: 8px;
-			background: #f2f4f5;
-			width: 100%;
-			border: none;
-			color: #c1c7cc;
-			padding: 0 15px;
+    input {
+      height: 50px;
+      border-radius: 8px;
+      background: #f2f4f5;
+      width: 100%;
+      border: none;
+      color: #c1c7cc;
+      padding: 0 15px;
 
-			&:focus {
-				outline: none;
-				color: #000;
-			}
+      &:focus {
+        outline: none;
+        color: #000;
+      }
 
-			&::placeholder {
-                color: #C1C7CC;
-            }
-		}
+      &::placeholder {
+        color: #c1c7cc;
+      }
+    }
 
-		.form_title {
-			padding-bottom: 5px;
-		}
+    .form_title {
+      padding-bottom: 10px;
+    }
 
-		.select_container {
-			position: relative;
-			height: 40px;
-			border-radius: 8px;
-			background: #f2f4f5;
-			width: 100%;
-			border: none;
-			color: #c1c7cc;
-			padding: 0 15px;
-			appearance: none;
-			display: flex;
-			align-items: center;		
+    .select_container {
+      position: relative;
+      height: 50px;
+      border-radius: 8px;
+      background: #f2f4f5;
+      width: 100%;
+      border: none;
+      color: #c1c7cc;
+      padding: 0 15px;
+      appearance: none;
+      display: flex;
+      align-items: center;
 
-			  &::after {
-				content: '';
-				position: absolute;
-				width: 20px; /* Adjust based on your image size */
-				height: 20px; /* Adjust based on your image size */
-				background-image: url('/toilet.png');
-				background-repeat: no-repeat;
-				background-position: center;
-				background-size: cover; /* Adjust based on your preference */
-				right: 10px; /* Adjust based on your layout */
-				top: 50%; /* Adjust to align vertically */
-				transform: translateY(-50%) /* Rotate the image */
-			  }
+      &::after {
+        content: "";
+        position: absolute;
+        width: 20px; /* Adjust based on your image size */
+        height: 20px; /* Adjust based on your image size */
+        background-image: url("/toilet.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover; /* Adjust based on your preference */
+        right: 10px; /* Adjust based on your layout */
+        top: 50%; /* Adjust to align vertically */
+        transform: translateY(-50%); /* Rotate the image */
+      }
+    }
 
-		}
-		
-		.select_container_a {
-			position: relative;
-			height: 40px;
-			border-radius: 8px;
-			background: #f2f4f5;
-			width: 100%;
-			border: none;
-			color: #c1c7cc;
-			padding: 0 15px;
-			appearance: none;
-			display: flex;
-			align-items: center;
-			padding-left: 0;
-			font-size: .75rem;
-		}
+    .select_container_a {
+      position: relative;
+      height: 50px;
+      border-radius: 8px;
+      background: #f2f4f5;
+      width: 100%;
+      border: none;
+      color: #c1c7cc;
+      padding: 0 15px;
+      appearance: none;
+      display: flex;
+      align-items: center;
+      padding-left: 0;
+      font-size: 0.75rem;
+    }
 
-		.img_input {
-			position: relative;
-			  display: flex;
-			  align-items: center;
+    .img_input {
+      position: relative;
+      display: flex;
+      align-items: center;
 
-			img {
-				position: absolute;
-				right: 10px;
-			}
+      img {
+        position: absolute;
+        right: 10px;
+      }
 
-			.img_down {
-				transform: rotate(90deg);
-			}
-		}
-	}
+      .img_down {
+        transform: rotate(90deg);
+      }
+    }
+  }
 }
 
 .start_container {
-	color: #000;
-	text-align: center;
-	padding-bottom: 30px;
+  color: #000;
+  text-align: center;
+  padding-bottom: 30px;
 
-	.start_date {
-		font-weight: 600;
-	}
+  .start_date {
+    font-weight: 600;
+  }
 }
 
 .confirm {
-	margin-top: 60px;
-	height: 50px;
-	border-radius: 8px;
-	background: #59adff;
-	width: 100%;
-	color: #fff;
-	font-weight: 600;
-	font-size: 1rem;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  margin-top: 30px;
+  height: 50px;
+  border-radius: 8px;
+  background: #59adff;
+  width: 100%;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-  .optionModalContent {
-	
-	position: fixed; /* Используем абсолютное позиционирование относительно вьюпорта */
-	top: 50%; /* Позиционируем верхний край элемента на середине экрана по вертикали */
-	left: 50%; /* Позиционируем левый край элемента на середине экрана по горизонтали */
-	transform: translate(-50%, -50%); /* Смещаем элемент на 50% его ширины и высоты назад, чтобы центрировать точно */
-	width: 300px; /* Задаем ширину элемента */
-	padding: 20px; /* Добавляем внутренние отступы */
-	background: white; /* Задаем фоновый цвет */
-	border-radius: 10px; /* Скругляем углы */
-	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Добавляем тень для визуального выделения */
-	outline: none;
+.optionModalContent {
+  position: fixed; /* Используем абсолютное позиционирование относительно вьюпорта */
+  top: 50%; /* Позиционируем верхний край элемента на середине экрана по вертикали */
+  left: 50%; /* Позиционируем левый край элемента на середине экрана по горизонтали */
+  transform: translate(
+    -50%,
+    -50%
+  ); /* Смещаем элемент на 50% его ширины и высоты назад, чтобы центрировать точно */
+  width: 300px; /* Задаем ширину элемента */
+  padding: 20px; /* Добавляем внутренние отступы */
+  background: white; /* Задаем фоновый цвет */
+  border-radius: 10px; /* Скругляем углы */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Добавляем тень для визуального выделения */
+  outline: none;
 
-	
-	h1 {
-		font-size: .75rem;
-		font-weight: 600;
-	}
-	
-	.btn {
-		margin-top: 20px;
-		border-radius: 8px;
-		background: #44515e;
-		height: 50px;
-		width: 100%;
-		color: #fff;
-		font-weight: 600;
-		font-size: 1rem;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		
-		&:last-child {
-			background: #ff59b5;
-		}
-	}
+  h1 {
+    font-size: 0.75rem;
+    font-weight: 600;
   }
+
+  .btn {
+    margin-top: 20px;
+    border-radius: 8px;
+    background: #44515e;
+    height: 50px;
+    width: 100%;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:last-child {
+      background: #ff59b5;
+    }
+  }
+}

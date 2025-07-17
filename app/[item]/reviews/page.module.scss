@@ -1,0 +1,79 @@
+.averagerating {
+  &_container {
+    @include flexbox($justify: left);
+    padding-bottom: $padding-medium;
+    border-bottom: 2px solid $secondary-light;
+  }
+
+  &_number {
+    font-size: $font-size-max;
+    padding-right: $padding-large;
+    font-weight: $font-weight-bold;
+  }
+
+  &_info {
+    @include flexbox(
+      $justify: space-between,
+      $direction: column,
+      $align: flex-start
+    );
+    color: $secondary;
+  }
+
+  &_stars {
+    padding-bottom: $padding-xsmall;
+  }
+
+  &_stars img {
+    margin-right: $padding-small;
+  }
+}
+
+.feedback {
+  &_container {
+    padding-top: $padding-large;
+    animation: fadeIn 1s ease-in-out;
+  }
+
+  &_info {
+    @include flexbox($justify: space-between);
+    padding-bottom: $padding-small;
+    color: $secondary;
+  }
+
+  &_sign {
+    @include flexbox($justify: space-between);
+  }
+
+  &_author {
+    padding-right: $padding-xsmall;
+    color: $accent;
+  }
+
+  &_photo {
+    @include image();
+    margin-bottom: -$padding-xsmall;
+    border-top-right-radius: $radius-medium;
+    border-top-left-radius: $radius-medium;
+  }
+
+  &_stars img {
+    margin-right: $padding-xsmall;
+  }
+
+  &_text {
+    padding: $padding-medium;
+    background-color: $background-grey;
+    border-bottom-right-radius: $radius-medium;
+    border-bottom-left-radius: $radius-medium;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

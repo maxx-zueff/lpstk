@@ -1,0 +1,103 @@
+.page {
+  min-height: inherit;
+  @include flexbox($justify: flex-end, $direction: column);
+}
+
+.date {
+  text-align: center;
+  margin: $padding-large 0;
+  color: $secondary;
+}
+
+.chat {
+  padding-bottom: $padding-large*2.5;
+}
+
+.message_wrapper {
+  @include flexbox($direction: column, $align: stretch);
+  margin-bottom: $padding-large;
+}
+
+.message_content {
+  @include flexbox($align: flex-end, $justify: flex-start, $wrap: nowrap);
+  gap: $padding-medium;
+}
+
+.message {
+  padding: $padding-medium;
+  font-size: $font-size-medium;
+  line-height: 1.4;
+  word-break: break-word;
+  border-radius: $radius-large;
+}
+
+.user_message {
+  justify-self: flex-end;
+  
+  .message_content {
+    flex-direction: row-reverse;
+  }
+  
+  .message {
+    background-color: $accent;
+    color: white;
+    border-bottom-right-radius: $radius-small;
+  }
+}
+
+.support_message {
+  justify-self: flex-start;
+  
+  .message_content {
+    flex-direction: row;
+  }
+  
+  .message {
+    background-color: $background-grey;
+    border-bottom-left-radius: $radius-small;
+  }
+}
+
+.message_time {
+  color: $secondary;
+}
+
+.input_wrapper {
+  @include fixed($top: auto);
+  bottom: 0;
+  padding: $padding-large;
+  background: white;
+}
+
+.input_container {
+    @include flexbox($align: center, $justify: space-between);
+  padding: $padding-small;
+  background-color: $background-grey;
+  border-radius: $radius-medium;
+}
+
+.message_input {
+  flex-grow: 1;
+  border: none;
+  background: transparent;
+  font-size: 0.75rem;
+  outline: none;
+  padding: 0;
+
+    @supports (-webkit-touch-callout: none) {
+        font-size: 1rem !important;
+    }
+
+  &::placeholder {
+    color: $secondary;
+  }
+}
+
+.send_button {
+  @include flexbox();
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-left: $padding-small;
+}
