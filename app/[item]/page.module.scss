@@ -68,8 +68,7 @@
 }
 
 .btn_container {
-  @include bottom-nav;
-  justify-content: center;
+  @include bottom-nav($justify: center);
 
   .btn_img {
     @include flexbox;

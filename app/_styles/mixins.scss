@@ -39,8 +39,8 @@
     height: 100% !important;
 }
 
-@mixin bottom-nav($bg-color: #59adff, $text-color: #fff,  $font-size: $font-size-medium) {
-    @include flexbox($justify: space-between);
+@mixin bottom-nav($bg-color: #59adff, $text-color: #fff,  $font-size: $font-size-medium, $justify: space-between) {
+    @include flexbox($justify: $justify);
     position: fixed;
     bottom: 0;
     left: 0;
@@ -52,6 +52,7 @@
     border-radius: $radius-large $radius-large 0 0;
     height: $nav-height-mobile;
     font-size: $font-size;
+    cursor: pointer;
 }
 
 @mixin input-style($height: $input-height-mobile) {
@@ -59,7 +60,7 @@
     border-radius: $radius-medium;
     background: $background-grey;
     width: 100%;
-    border: none;
+    border: 1px solid transparent;
     color: $primary;
     padding: 0 $padding-medium;
     font-size: 0.75rem !important;

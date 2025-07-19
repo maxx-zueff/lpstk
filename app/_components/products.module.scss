@@ -81,7 +81,7 @@
       .image {
         @include image;
         border-radius: $radius-medium;
-        background: $background-gradient-green;
+        background: $background-grey;
       }
 
       .items_description {

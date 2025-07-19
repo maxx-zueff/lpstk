@@ -1,97 +1,89 @@
-.header_container {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 15px 30px;
-	position: fixed;
-	top: 0;
-	width: 100%;
-	margin: 0 -30px;
-	z-index: 100;
-	background: #fff;
+.container {
+  @include center-container;
+  width: 100%;
+  padding: 0 $padding-large;
 
+  .title {
+    @include text-header(
+      $color: $primary,
+      $font-size: $font-size-max,
+      $font-weight: $font-weight-bold
+    );
+  }
 
-	.header_title {
-		font-size: 1rem;
-		font-weight: 600;
-		width: 100%;
-		text-align: center;
-	}
-}
+  .desc {
+    padding-top: $padding-small;
+    @include text-header(
+      $color: $secondary,
+      $font-size: $font-size-medium,
+      $font-weight: $font-weight-regular
+    );
 
-.main_container {
-	padding-top: 60px;
-}
+    span {
+      @include text-accent($color: $primary, $font-weight: $font-weight-bold);
+    }
 
-.auth_container {
+    a {
+      @include text-accent($accent, $font-weight-bold);
+      cursor: pointer;
+    }
+  }
+
+  .form {
+    padding-top: $padding-large * 2;
     width: 100%;
-    padding: 0 30px;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
 
-    .title {
-        font-size: 36px;
-        font-weight: 600;
-    }
-    
-    .desc {
-        padding-top: 10px;
-        color: #989BA5;
-
-        span {
-            font-weight: 600;
-        }
+    .form_title {
+      @include text-header(
+        $color: $primary,
+        $font-size: $font-size-medium,
+        $font-weight: $font-weight-bold
+      );
+      padding-bottom: $padding-small;
     }
 
-    .form_row {
-		padding-top: 60px;
-		display: flex;
-		width: 100%;
-		flex: 100%;
+    input {
+      @include input-style($height: 50px);
 
-		.form_col {
-			flex: 1;
-		}
-
-		input {
-			height: 40px;
-			border-radius: 8px;
-			background: #f2f4f5;
-			width: 100%;
-			border: none;
-			color: #c1c7cc;
-			padding: 0 15px;
-
-			&:focus {
-				outline: none;
-				color: #000;
-			}
-
-            &::placeholder {
-                color: #C1C7CC;
-            }
-		}
-
-		.form_title {
-            font-weight: 600;
-			padding-bottom: 5px;
-		}
+      &.invalid {
+        border: 1px solid $accent-red;
+        animation: shake 0.3s ease-in-out;
+      }
     }
+  }
 
-    .confirm {
-        margin: 30px 0;
-        height: 50px;
-        border-radius: 8px;
-        background: #59adff;
-        width: 100%;
-        color: #fff;
-        font-weight: 600;
-        font-size: 1rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+  .notify_container {
+    padding-top: $padding-medium;
+
+    .notify_warning {
+      @include notify($background: $background-gradient-red);
+      animation: slideIn 0.3s ease-out;
     }
+  }
 }
 
+.confirm {
+  @include bottom-nav($justify: center);
+
+  &.confirm_disabled {
+    background: $secondary;
+    cursor: not-allowed;
+  }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
